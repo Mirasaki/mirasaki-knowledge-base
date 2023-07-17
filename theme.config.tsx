@@ -109,8 +109,8 @@ const config: DocsThemeConfig = {
   head: function useHead() {
     const config = useConfig<{ description?: string; image?: string }>()
     const description =
-      config.frontMatter.description || 'Explore documentation and guides for projects and services by Mirasaki Development'
-    const image = config.frontMatter.image || '/logo-macbook.png'
+      config.frontMatter.description || 'Explore a collection of guides/tutorials, tips and documentation regarding use of our products and services'
+    const image = config.frontMatter.image || '/images/logo-square.png'
     return (
       <>
         {/* Favicons, meta */}
@@ -141,9 +141,10 @@ const config: DocsThemeConfig = {
         <meta httpEquiv="Content-Language" content="en" />
         <meta name="description" content={description} />
         <meta name="og:description" content={description} />
-        <meta name="twitter:card" content="summary_large_image" />
+        {/* Don't use large image */}
+        {/* <meta name="twitter:card" content="summary_large_image" /> */}
         <meta name="twitter:image" content={image} />
-        <meta name="og:title" content={`${config.title} – Mirasaki Development`} />
+        <meta name="og:title" content={`${config.title}`} />
         <meta name="og:image" content={image} />
         <meta name="apple-mobile-web-app-title" content="Mirasaki Development" />
       </>

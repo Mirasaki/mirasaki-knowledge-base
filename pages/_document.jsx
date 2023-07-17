@@ -5,7 +5,9 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head />
+        <Head>
+          <meta name="theme-color" content={"#91DDF2"} />
+        </Head>
         <body>
           <SkipNavLink styled />
           <Main />
