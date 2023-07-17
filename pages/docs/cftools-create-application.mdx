@@ -1,0 +1,54 @@
+import { Callout, Steps } from 'nextra-theme-docs'
+import GoBackButton from '@components/GoBackButton'
+
+# CFTools Developer Application
+
+This application interacts with the [CFTools Data API](https://developer.cftools.cloud/documentation/data-api) and therefor requires you to create a CFTools Developer Application. If you already have a CFTools Developer Application, feel free to re-use your credentials and skip to the next part of your guide.
+
+<Callout type="info">If you were directed here from a different guide or tutorial, there's a button at the bottom of this page that takes you back to your guide</Callout>
+
+<Steps>
+
+### Go to CFTools Applications
+
+Let's get started by navigating to the [CFTools Developer Portal](https://developer.cftools.cloud/applications), and clicking the "New Application" button in the top-right
+
+![new-application](/images/guides/cftools-create-application/new-application.png)
+
+### Create the application
+
+Give it a unique name, so that you can recoqnize it later, and click "Create"
+
+![create-application](/images/guides/cftools-create-application/create-application.png)
+
+<Callout type="error">Don't use **`CFTools`** in the name of your application, this is reserved for internal use and will error if you include it in your applications's name</Callout>
+
+### Save the application credentials
+
+Note your Application Id and Secret down, you **will** need these later.
+
+#### Application ID
+
+**Application ID** is your `CFTOOLS_API_APPLICATION_ID`
+
+#### Secret
+
+**Secret** is your `CFTOOLS_API_SECRET`
+
+![app-id-and-secret](/images/guides/cftools-create-application/app-id-and-secret.png)
+
+### Grant access to resources
+
+Navigate to the **"Grant URL"** displayed in your CFTools application overview, and navigate there to authorize access to your server & resources (ban lists included, if you plan on using any)
+
+![grant-url](/images/guides/cftools-create-application/grant-url.png)
+
+![grant-access](/images/guides/cftools-create-application/grant-access.png)
+
+<Callout type="error">This is where most users encounter errors. This step, like all others, is crucial, and your bot won't work without it - if you encounter any `GrantRequired` errors, that means you are missing this **Grant** of **Access** to your resources.</Callout>
+
+</Steps>
+
+<Callout type="info" emoji="✅">That's all. You have now created your own CFTools Developer Application that will be used to communicate with the CFTools Data API. Note down your credentials for this application, and store them somewhere safe.</Callout>
+
+<GoBackButton />

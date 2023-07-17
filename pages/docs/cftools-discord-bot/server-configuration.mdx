@@ -1,0 +1,119 @@
+import { Callout } from 'nextra-theme-docs'
+import { Cards, Card } from 'nextra/components'
+
+# 🛠️ Server Configuration
+
+All server configuration is done in `config/servers.js` and multiple servers are supported. This file contains all configuration variables/options that apply on a (DayZ) server-specific level. For example, you can have a DayZ server with a live-chat module, while your second server has this entirely disabled. Configuration is shared between Discord guilds/servers. 
+
+## Creating the file
+
+1. Navigate into the `/config` folder
+2. **Copy & Paste** `servers.example.js` and **rename** the file to `servers.js`
+3. Fill in your server configuration values
+
+<Callout type="error">It is important that you leave the `.example` file intact. This is used to point out the differences in configuration when you update to later versions. Aside form that, renaming the `.example` file directly will also create merge issues when updating to later versions</Callout>
+
+## Server configuration options explained [#configuration-explained]
+
+This section will explain what the different configuration options mean. The configuration options can be categorized into separate modules:
+
+<Cards>
+  <Card title="Global" href="#global" />
+  <Card title="Command Configuration" href="#command-configuration" />
+  <Card title="Live Chat Module" href="#live-chat-module" />
+  <Card title="Teleport Configuration" href="#teleport-configuration" />
+  <Card title="Leaderboard Configuration" href="#leaderboard-configuration" />
+  <Card title="Automatic Leaderboard" href="#automatic-leaderboard" />
+</Cards>
+
+### Global (required) [#global]
+
+Configuration that is required for most of our functionality to work, these should be considered required, meaning you **will** have to change these values to your own. Everything else can be considered optional and therefor left on the default values
+
+| Configuration Option   | Description | Type |
+| :---- | :----: | ----: |
+| `NAME`    |  The name used to identify this server, used internally and when selecting servers in Discord   |   string |
+| `CFTOOLS_SERVER_API_ID` | Your CFTools Server API-ID, refer to [the guide](/docs/cftools-server-api-id)  | string |
+| `SERVER_IPV4` | Your DayZ game-server's public IP address, your users use this to connect to your server  | string |
+| `SERVER_PORT` | Your DayZ game-server port, **not** your steam-query port  | number |
+
+### Command Configuration
+
+These configuration options apply changes to commands/functionality that aren't considered modules
+
+| Configuration Option   | Description | Type |
+| :---- | :----: | ----: |
+| `STATISTICS_INCLUDE_ZONES_HEATMAP` | Include the zones heatmap image in the /statistics command  | boolean |
+| `STATISTICS_KEEP_PUPPETEER_BROWSER_OPEN` | Keep the Chromium browser open - this generates the heatmap faster, but uses ~20 MB more RAM  | boolean |
+| `STATISTICS_HIDE_PLAYER_NAME_HISTORY` | Set this to false if you want a player's in-game name history to be public  | boolean |
+| `SERVER_INFO_INCLUDE_MOD_LIST` | Include mod list output/embeds in `/server-info`  | boolean |
+
+### Live Chat Module
+
+This application offers a module that let's you dynamically forward/relay chat from members in Discord, to your DayZ server - use these configuration options to modify/personalize the module
+
+<Callout>Requires the privileged "Message Content Intent" ([discord.dev](https://discord.com/developers/applications) > Your App > Bot > `Message Content Intent` - check out [this guide](/docs/discord-create-application#intents) if you need more information)</Callout>
+
+<Callout type="info">Max message length is `256` characters, and a members tags and display name count towards that</Callout>
+
+| Configuration Option   | Description | Type |
+| :---- | :----: | ----: |
+| `USE_CHAT_FEED` | Enable or disable the chat feed module  | boolean |
+| `CHAT_FEED_CHANNEL_IDS` | The channels where members can send messages that get forwarded to DayZ  | string[] |
+| `CHAT_FEED_REQUIRED_ROLE_IDS` | Required roles for a message to be broadcasted to DayZ. Public if empty. All roles defined are required  | string[] |
+| `CHAT_FEED_USE_DISCORD_PREFIX` | Enable or disable the "(Discord)" prefix in the in-game message  | boolean |
+| `CHAT_FEED_USE_DISPLAY_NAME` | By default displayed the members nickname, can be disabled to display username instead  | boolean |
+| `CHAT_FEED_MESSAGE_COOLDOWN` | Members messages get forwarded to DayZ once every X seconds. Set to false to disable throttling  | number or `false` |
+| `CHAT_FEED_MAX_DISPLAY_NAME_LENGTH` | Maximum allowed length of Discord display names  | number |
+| `CHAT_FEED_DISCORD_TAGS` | List of Discord role tags to display in-game. If member has multiple roles the first role tag will be used | array |
+| `CHAT_FEED_DISCORD_TAGS#roleIds` | Roles a member should have for this to check `true`  | string or string[] |
+| `CHAT_FEED_DISCORD_TAGS#displayTag` | The tag displayed in-game when `true`  | string |
+
+### Teleport Configuration
+
+Configure the use of premade teleport locations
+
+| Configuration Option   | Description | Type |
+| :---- | :----: | ----: |
+| `USE_TELEPORT_LOCATIONS` | Should the `/teleport-location` command be available  | boolean |
+| `TELEPORT_LOCATIONS_FILE_NAME` | Teleport file to use for this server configuration. Loaded from `/config/teleport-locations/`  | string |
+
+### Leaderboard Configuration
+
+Global `/leaderboard` command configuration. Configure sorting stats, output format and your leaderboard blacklist, 
+
+| Configuration Option   | Description | Type |
+| :---- | :----: | ----: |
+| `LEADERBOARD_DEFAULT_SORTING_STAT` | What stat should be used as the default sorting stat  | one of `LEADERBOARD_STATS` |
+| `LEADERBOARD_PLAYER_LIMIT` | How many players to display - min `10`, max `100`  | number |
+| `LEADERBOARD_BLACKLIST` | Players (steam64/CFToolsID) to exclude from leaderboard  | string[] |
+| `LEADERBOARD_STATS` | What stats should be enabled in the leaderboard module  | string[] |
+
+
+### Automatic Leaderboard
+
+A module that sets a channel as a dedicated, always up-to-date leaderboard feed
+
+| Configuration Option   | Description | Type |
+| :---- | :----: | ----: |
+| `AUTO_LB_ENABLED` | Should we automatically update/post the leaderboard  | boolean |
+| `AUTO_LB_CHANNEL_ID` | The id of the channel to post the leaderboard  | string |
+| `AUTO_LB_INTERVAL_IN_MINUTES` | Time between messages in minutes  | number |
+| `AUTO_LB_REMOVE_OLD_MESSAGES` | Should we delete our old messages  | boolean |
+| `AUTO_LB_PLAYER_LIMIT` | Amount of players to display on automatic leaderboard, min `10`, max `100`  | number |
+| `AUTO_LB_STAT` | The stat to rank players by in auto leaderboard module  | one of `LEADERBOARD_STATS` |
+
+## Multiple servers
+
+To add a second, or more, servers - copy-paste your entire server block and modify the configuration. Afterwards, make sure your syntax is still valid:
+
+```javascript
+[
+  {
+    ...
+  }, <-- Notice the comma - always add this when adding a new server block
+  {
+    ...
+  }
+]
+```

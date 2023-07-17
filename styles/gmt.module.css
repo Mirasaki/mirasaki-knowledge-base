@@ -1,0 +1,38 @@
+.heroImage {
+  margin-top: 1rem;
+  text-align: center;
+  /* Use "linear-gradient" to add a darken background effect to the image. This will make the text easier to read */
+  /* background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../public/images//gmt_banner.jpg'); */
+  background-image: url('../public/images/projects/backgrounds/gmt.jpg');
+
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+  box-shadow: 0 0px 0px 0px #f0f1f5, 0 0px 0px 0px #f0f1f5, 6px 0 10px -4px black, -6px 0 10px -4px black;
+  border-radius: 15px;
+}
+
+.animated-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Animation */
+  margin-top: .5rem;
+  transition: margin 150ms linear;
+}
+
+.animated-button-wrapper:is(:hover, :active) > .animated-button {
+  margin-top: 0rem;
+  margin-bottom: .5rem;
+}
+
+.banner-wrapper {
+  flex-grow: 0;
+  display: inline-block;
+  text-align: center;
+  /* overflow: hidden; */
+}

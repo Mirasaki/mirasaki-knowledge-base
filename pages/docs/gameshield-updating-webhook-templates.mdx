@@ -1,0 +1,29 @@
+import { Callout, Steps } from 'nextra/components'
+
+# Updating Webhook Templates
+
+Our next step is updating the CFTools dashboard webhook `Templates` settings
+
+<Steps>
+
+### Find the latest templates [#latest-templates]
+
+Find the latest templates by using **GameShield's** `/webhook-templates` command. It should look like the attached screenshot. These long texts represent the values we are going to apply to our `CFTools Webhook Templates` settings.
+
+<Callout>The templates on this website will not always be up-to-date. Always use the bot command to find the latest templates.</Callout>
+
+![webhook-templates](/images/guides/gameshield-updating-webhook-templates/webhook-templates.png)
+
+### Go to CFTools webhook templates [#go-to-templates]
+
+Navigate to `Integrations` on the [CFTools dashboard](https://app.cftools.cloud/dashboard), and click the `Templates` button for the webhook you want to use
+
+![go-to-templates](/images/guides/gameshield-updating-webhook-templates/go-to-templates.png)
+
+And update your relevant event templates according to the output of `/webhook-templates`, as demonstrated in this short GIF
+
+![update-templates](/images/guides/gameshield-updating-webhook-templates/update-templates.gif)
+
+</Steps>
+
+Continue by [adding your feeds](/docs/gameshield-adding-feeds) to our **webhook listener**

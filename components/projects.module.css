@@ -1,0 +1,64 @@
+.disabled {
+  color: grey !important;
+  pointer-events: none;
+}
+
+.projectLink {
+  text-decoration: none;
+  color: inherit;
+  margin-left: .25rem;
+}
+
+.projectLink:is(:hover, :active, :focus) {
+  color: skyblue;
+  text-decoration: underline;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem 2rem;
+  margin: 2.5rem 0 2rem;
+}
+.projectEntry {
+  align-items: center;
+  display: inline-flex;
+}
+.projectEntry h4 {
+  margin: 0 0 0 0.5rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  white-space: nowrap;
+}
+@media (max-width: 860px) {
+  .projects {
+    gap: 1rem 0.5rem;
+  }
+  .projectEntry {
+    padding-left: 0;
+    justify-content: center;
+  }
+  .projectEntry svg {
+    width: 20px;
+  }
+  .projectEntry h4 {
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 660px) {
+  .projects {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 370px) {
+  .projects {
+    grid-template-columns: 1fr;
+  }
+  .projectEntry h4 {
+    font-size: 0.8rem;
+  }
+  .projectEntry svg {
+    width: 16px;
+    stroke-width: 2.5px;
+  }
+}

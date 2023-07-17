@@ -1,0 +1,84 @@
+import { Callout, Steps } from 'nextra/components'
+
+# Getting Started
+
+Let's get started by configuring **GameShield** to parse information from your free [CFTools]() webhook.
+
+We do this by providing it with a Discord Webhook URL. 
+
+<Steps>
+
+### Go to your CFTools dashboard [#go-to-dashboard]
+
+First, go to your [CFTools dashboard](https://app.cftools.cloud/dashboard) and select the server you want to `Manage`
+
+![go-to-dashboard](/images/guides/cftools-server-api-id/go-to-dashboard.png)
+
+### Go to server integrations [#go-to-integrations]
+
+Click `Integrations` in the left-hand menu
+
+![go-to-integrations](/images/guides/gameshield-getting-started/go-to-integrations.png)
+
+### Create Discord webhook
+
+Select your existing CFTools webhook, or alternatively - let's create your first Discord - CFTools webhook
+
+`Right-click` (click and hold on mobile) the channel where you want your webhook to be active, and select `Edit Channel`
+
+Navigate to `Integrations` in the left-hand menu, click `Webhooks`, and create your new webhook. Optionally provide it with a custom name and avatar/profile icon.
+
+When that's done, click the `Copy Webhook URL` button, keep this value somewhere safe - don't share it with anyone
+
+![channel-settings](/images/guides/gameshield-getting-started/channel-settings.png)
+
+![webhook-url](/images/guides/gameshield-getting-started/webhook-url.png)
+
+### Discord Permissions
+
+**GameShield** requires the `View Channel` and `Read Message History` permissions in the channel where you created this webook.
+
+Right-click (press and hold on mobile) the channel where your webhook is active, and click `Edit Channel`.
+
+Navigate to `Permissions` in the right-hand menu, click `+ (Add new permission overwrites)`, and select **GameShield** from the list of members and roles.
+
+![create-permission-overwrite](/images/guides/gameshield-getting-started/create-permission-overwrite.png)
+
+<Callout>Don't forget to click the green checks for `View Channel` and `Read Message History` after selecting **GameShield**</Callout>
+
+### Create CFTools Webhook
+
+Back on the CFTools dahsboard, click `New Webhook` on the page where we left off. Provide the `Discord Webhook URL` from earlier, select `Discord Webhook` in the type dropdown, and hit `Deploy`
+
+![create-cftools-webhook-1](/images/guides/gameshield-getting-started/create-cftools-webhook-1.png)
+![create-cftools-webhook-2](/images/guides/gameshield-getting-started/create-cftools-webhook-2.png)
+
+### Select the events [#select-events]
+
+Select the events you plan on using - the following screenshot has every event that **GameShield** will eventually handle, this includes every event **except** `cloud.restricted` and `cloud.authentication_error`
+
+![select-events](/images/guides/gameshield-getting-started/select-events.png)
+
+This table represents the required `events` (CFTools webhook events) for our feeds. This list will be gradually updated over time to account for new feeds, like chat and player-join/leave feeds.
+
+| feed-type   | required `events` |
+| :----- | :----: |
+| kill    |  `player.kill`   |
+| damage | `player.damage`  |
+| ban | `ban.add` |
+
+<Callout>The `ban.add` event is not in your default CFTools webhook settings - this is included as a separate module under "Ban Manager", the setup is entirely the same and you can have overlapping webhook configurations</Callout>
+
+### Registering your webhook
+
+To register your newly created webhook, use the `/add-webhook-listener` command and give it a unique new that allows you to identify it. Common names are `<Server Name>`, and `<Server Name> - Bans` for the ban feed.
+
+<Callout>**GameShield** requires the `Manage Webhooks` permission for this command. This is so we can resolve the `user-id` and `channel-id` for this webhook. **GameShield** will never send messages through this webhook - the `Manage Webhooks` permission can be safely removed after using this command</Callout>
+
+The second option is the `webhook url`, this is the **Discord** webhook URL that we created earlier in [creating a Discord webhook](#create-discord-webhook)
+
+![register-webhook](/images/guides/gameshield-getting-started/register-webhook.png)
+
+<Callout type="info">That's all! GameShield is now listening for messages from the webhook that we just created, and will parse information to be used in our feeds - but you're not done yet. In it's current state, **GameShield** will not be active, you will instead see the default CFTools webhook message - continue by [updating your webhook templates](/docs/gameshield-updating-webhook-templates)</Callout>
+
+</Steps>

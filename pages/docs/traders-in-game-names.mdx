@@ -1,0 +1,70 @@
+import { Callout } from 'nextra-theme-docs'
+
+# In-game Names
+
+<Callout type="info">This guide will teach you how to configure in-game names for either of our trader bots, be it **Green Mountain Trader** or **Expansion Market**, the process is the same</Callout>
+
+[Wardog](https://steamcommunity.com/id/officialwardog/myworkshopfiles/?appid=221100) was kind enough to provide a script that exports in-game item names to a usable `JSON` file - mapped by their class name - to a new file called `items.export.json` in your servers profiles folder. This script has been improved and refactored over time.
+
+Keep in mind: The in-game names will be exported according to your system language. If your operating system's language is set to "Dutch" but you run an English server do not use this without changing your language settings first. To stop using the item-list functionality, use the `/clear-item-list` command
+
+## Defining the function
+
+Place this code anywhere in your `init.c` file
+
+```c
+void ExportItemsList()
+{
+    string type_name;
+    string display_name;
+    map<string, string> item_dict = new map<string, string>(); // store into a linked list for easy serialization
+
+    // Add all paths to our array
+    TStringArray cfgPaths = new TStringArray;
+    cfgPaths.Insert( "CfgVehicles" );
+    cfgPaths.Insert( "CfgWeapons" );
+    cfgPaths.Insert( "CfgMagazines" );
+
+    // Run on every cfgPath
+    for (int x = 0; x < cfgPaths.Count(); ++x)
+    {
+        int count = GetGame().ConfigGetChildrenCount(cfgPaths.Get(x)); // get count of all children
+        for (int i = 0; i < count; i++) // loop over count
+        {
+            GetGame().ConfigGetChildName(cfgPaths.Get(x), i, type_name); // resolve type name
+            if (GetGame().ConfigGetInt(cfgPaths.Get(x) + " " + type_name + " scope") == 2) // only include public scope
+            {
+                GetGame().ConfigGetText(cfgPaths.Get(x) + " " + type_name + " displayName", display_name); // get display name / in-game name
+                item_dict[type_name] = display_name; // save the type:display-name as a key-value pair
+            }
+        }
+    };
+
+    // save all data to file in server or client profile
+    JsonFileLoader<map<string, string>>.JsonSaveFile("$profile:items.export.json", item_dict);
+}
+```
+
+## Calling the function
+
+All we have to do is call `ExportItemsList();` **before the closing curly bracket** in your `void main()` function
+
+<Callout type="error">Where you call this function is important, notice the placement - just before the `#main` closing bracket, but after our economy was initialized</Callout>
+
+
+```c
+void main()
+{
+    // ...
+    // All your main() code
+    // ...
+
+    // Export our items from mission's entry method
+    // At the end of main(), just before the closing bracket
+    ExportItemsList();
+}
+```
+
+## ... And you're done! [#done]
+
+The next time your server initiates it will generate a file called `items.export.json` file in your server's profiles folder (server start parameter), upload this with the `/set-item-names` command for the bot you're using

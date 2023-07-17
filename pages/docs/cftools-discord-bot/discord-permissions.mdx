@@ -1,0 +1,32 @@
+import { Callout } from 'nextra-theme-docs'
+
+# Discord Permissions
+
+<Callout>At this point, your bot needs to have joined your Discord server, please refer to [the guide](/docs/discord-create-application#add-to-server) if this is not the case for you</Callout>
+
+<Callout type="info">This is not the permission level required to execute actions or run commands, like User, Moderator or Administrator - those are [Client Permissions](/docs/cftools-discord-bot/5-client-permissions)</Callout>
+
+## Scopes
+
+Both the `bot` and `applications.commands` **scopes** are required when adding the bot to your server - if you're getting errors related to `deploying application commands`, your bot is either missing the `applications.commands` or not in the server where guild/server-commands get deployed to
+
+## Command Permissions
+
+Any basic command feedback can be used without any Discord permissions. This is limited to replying to interactions, so if you plan on adding message commands to your bot you should check for these basic/feedback permissions.
+
+Command Feedback Permissions include:
+
+- `View Channel` - Commands can be used in any text-based channel, unless restricted by [Slash Command Permissions](https://discord.com/blog/slash-commands-permissions-discord-apps-bots) - this is controlled on a guild/server level and developers are not in control of default permissions.
+- `Send Messages` - The bot/client can reply to any command interaction (slash commands, buttons, modals, etc.) without needing this permissions. Again, this doesn't apply to message commands
+- `Embed Link` - When the bot/client replies to any command interaction, links will show their embeds by default, unless escaped in `<>` - like so: `<https://example.com>`
+- `Attach Files` - When replying to command interactions, the bot/client can include files in the response. Ephemeral file uploads are supported as command options, so this is a 2-way street
+
+## Automatic Leaderboard
+
+`AUTOMATIC_LEADERBOARD_MODULE`: This requires the following permissions in any channel this module is assigned to: `View Channel`, `Read Message History`, `Send Messages`, and `Embed Links`
+
+These permissions aren't required in command interactions, but this module posts messages without the need for an interaction, and is therefor considered a message command
+
+## Live Chat Relay
+
+`DISCORD_TO_DAYZ_LIVE_CHAT_RELAY`: This module requires the privileged Discord "Message Content Intent" ([discord.dev](https://discord.com/developers/applications) > Your App > Bot > `Message Content Intent` - check out [this guide](/docs/discord-create-application#intents) if you need more information). This module also requires the following permissions in the channel where Discord messages are relayed from: `View Channel` and `Read Message History`

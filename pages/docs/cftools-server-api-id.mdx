@@ -1,0 +1,36 @@
+import { Callout, Steps } from 'nextra-theme-docs'
+import GoBackButton from '@components/GoBackButton'
+
+# CFTools Server API Id
+
+<Callout emoji="🚨">Most users provide the wrong value for this `SERVER_API_ID` field, if you're encountering `UnknownResource` or `ResourceNotFound` errors, you're most likely using the wrong value for this field</Callout>
+
+This key/value is used to identify your CFTools Cloud instance (your server) on the CFTools Data API.
+
+<Steps>
+
+### Go to your CFTools dashboard [#go-to-dashboard]
+
+Navigate to your [CFTools dashboard](https://app.cftools.cloud/dashboard), and click the `Manage` option in your server list
+
+![go-to-dashboard](/images/guides/cftools-server-api-id/go-to-dashboard.png)
+
+### Go to server settings [#go-to-settings]
+
+Click `Settings` in the left-hand menu
+
+![go-to-settings](/images/guides/cftools-server-api-id/go-to-settings.png)
+
+### Expand API Key [#go-to-api-key]
+
+Expand the `API Key` section, and copy your `Server ID`
+
+#### Server ID
+
+**Server ID** is your `SERVER_API_ID`
+
+![go-to-api-key](/images/guides/cftools-server-api-id/go-to-api-key.png)
+
+</Steps>
+
+<GoBackButton />

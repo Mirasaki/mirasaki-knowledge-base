@@ -1,0 +1,35 @@
+import { useData } from 'nextra/data'
+
+import CommandAccordion from '@components/Commands/CommandAccordion'
+
+export const getStaticProps = ({ params }) => {
+  return fetch(`${process.env.NEXT_PUBLIC_CFTOOLS_BOT_API_URL}/api/commands`)
+    .then((res) => res.json())
+    .then(data => ({
+      props: {
+        // We add an `ssg` field to the page props,
+        // which will be provided to the Nextra `useData` hook.
+        ssg: {
+          commands: data
+        }
+      },
+      // The page will be considered as stale and regenerated every hour.
+      revalidate: 3600
+    }))
+    .catch((err) => ({
+      props: {
+        ssg: {
+          commands: []
+        }
+      }
+    }))
+}
+
+export const CFToolsBotCommandAccordion = () => {
+  const { commands = [] } = useData()
+  return <CommandAccordion commands={commands}/>
+}
+ 
+# Commands
+
+<CFToolsBotCommandAccordion />

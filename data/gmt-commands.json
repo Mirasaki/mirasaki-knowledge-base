@@ -1,0 +1,290 @@
+[
+  {
+    "enabled": true,
+    "category": "Trading",
+    "data": {
+      "name": "trader",
+      "description": "Search the trader for items. This command is the heart of the bot, it's a combination of multiple different ways to display items. Select an option in the autocomplete menu for detailed item information, or don't select any options to query the item database for that specific name",
+      "options": [
+        {
+          "name": "search-query",
+          "description": "The query to search Trader items for", 
+          "required": true
+        }
+      ]
+    }
+  },
+
+
+  {
+    "category": "Debugging",
+    "enabled": true,
+    "data": {
+      "name": "debug",
+      "description": "Display detailed debugging information for a specific item. This is currently only supported for the Expansion Market module. This debug information might be requested by developers to assist with bug reports.",
+      "options": [
+        {
+          "name": "search",
+          "description": "The autocomplete query for the item you want to debug",
+          "required": true
+        },
+        {
+          "name": "include-output",
+          "description": "Should the normal /trader output be displayed",
+          "required": false
+        },
+        {
+          "name": "debug-base",
+          "description": "Should the item base debugging information be displayed",
+          "required": false
+        },
+        {
+          "name": "debug-stock",
+          "description": "Should the item stock debugging information be displayed",
+          "required": false
+        },
+        {
+          "name": "debug-trader",
+          "description": "Should the item trader debugging information be displayed",
+          "required": false
+        },
+        {
+          "name": "debug-trader-zone",
+          "description": "Should the item trader zone debugging information be displayed",
+          "required": false
+        }
+      ]
+    }
+  },
+
+
+
+  {
+    "category": "Item List",
+    "enabled": true,
+    "data": {
+      "name": "item-list",
+      "description": "Display a link to the website guide explaining how to configure in-game names for a server",
+      "options": []
+    }
+  },
+  {
+    "category": "Item List",
+    "enabled": true,
+    "data": {
+      "name": "set-item-list",
+      "description": "Set your item-list file. Requires init.c modifications. Use /item-list for more information",
+      "options": [
+        {
+          "name": "item-list-export",
+          "description": "Your items-export.json. Use /item-list for more information",
+          "required": true
+        }
+      ]
+    }
+  },
+  {
+    "category": "Item List",
+    "enabled": true,
+    "data": {
+      "name": "remove-item-list",
+      "description": "Wipe your in-game item list data. Can be used if you no longer want to use in-game names instead of class names.",
+      "options": []
+    }
+  },
+
+
+
+  {
+    "category": "Expansion Market",
+    "enabled": true,
+    "data": {
+      "name": "set-market-config",
+      "description": "Set your Expansion Market config (zipped server/profile/ExpansionMod/Market folder). These files hold your item categorization and item stat defaults, and are therefor required by the client to function properly.",
+      "options": [
+        {
+          "name": "market-config-zip",
+          "description": "Your zipped server/profile/ExpansionMod/Market folder",
+          "required": true
+        }
+      ]
+    }
+  },
+  {
+    "category": "Expansion Market",
+    "enabled": true,
+    "data": {
+      "name": "set-market-map",
+      "description": "Set your Expansion Market trader maps (zipped mpmissions/expansion/traders folder). These files hold your trader map data, and is required in order to check which trader zone a specific trader is located in.",
+      "options": [
+        {
+          "name": "market-maps-zip",
+          "description": "Your zipped mpmissions/expansion/traders folder",
+          "required": true
+        }
+      ]
+    }
+  },
+  {
+    "category": "Expansion Market",
+    "enabled": true,
+    "data": {
+      "name": "set-market-traders",
+      "description": "Set your Expansion Market traders (zipped profiles/ExpansionMod/Traders folder). These files hold your individual trader configurations, and are therefor essential to function properly.",
+      "options": [
+        {
+          "name": "market-traders-zip",
+          "description": "Your zipped profiles/ExpansionMod/Traders folder",
+          "required": true
+        }
+      ]
+    }
+  },
+  {
+    "category": "Expansion Market",
+    "enabled": true,
+    "data": {
+      "name": "set-market-zones",
+      "description": "Set your Expansion Market zones (zipped mpmissions/expansion/traderzones folder). These files hold your configuration for your trader zones, prices and locations can't be displayed accurately without this, and it's therefor required to function properly",
+      "options": [
+        {
+          "name": "market-zones-zip",
+          "description": "Your zipped mpmissions/expansion/traderzones folder",
+          "required": true
+        }
+      ]
+    }
+  },
+
+
+
+  {
+    "category": "TraderPlus",
+    "enabled": true,
+    "data": {
+      "name": "set-trader-plus-file",
+      "description": "Set your TraderPlus config file, this file is called TraderPlusPriceConfig.json and contains all your item prices (with categorization) configuration",
+      "options": [
+        {
+          "name": "config-file",
+          "description": "Your TraderPlusPriceConfig.json file", 
+          "required": true
+        }
+      ]
+    }
+  },
+  {
+    "category": "TraderPlus",
+    "enabled": true,
+    "data": {
+      "name": "set-trader-plus-ids",
+      "description": "Set your TraderPlusIDsConfig file. This file contains the information required to know what categories traders sell, optional.",
+      "options": [
+        {
+          "name": "TraderPlusIDsConfig",
+          "description": "Your TraderPlusIDsConfig.json file",
+          "required": true
+        }
+      ]
+    }
+  },
+  {
+    "category": "TraderPlus",
+    "enabled": true,
+    "data": {
+      "name": "remove-trader-plus-ids",
+      "description": "Wipe your TraderPlusIDsConfig data. You should never have to use this, only used if you don't want the additional item information.",
+      "options": []
+    }
+  },
+  {
+    "category": "TraderPlus",
+    "enabled": true,
+    "data": {
+      "name": "set-trader-plus-general-config",
+      "description": "Set your TraderPlusGeneralConfig file. This file is used to take your currency into consideration and let's the bot display trader locations.",
+      "options": [
+        {
+          "name": "TraderPlusGeneralConfig",
+          "description": "Your TraderPlusGeneralConfig.json file",
+          "required": true
+        }
+      ]
+    }
+  },
+  {
+    "category": "TraderPlus",
+    "enabled": true,
+    "data": {
+      "name": "remove-plus-general-config",
+      "description": "Wipe your TraderPlusGeneralConfig data. You should never have to use this, only used if you don't want the additional item information",
+      "options": []
+    }
+  },
+
+
+
+  {
+    "category": "Trader (by Dr. Jones)",
+    "enabled": true,
+    "data": {
+      "name": "set-trader-file",
+      "description": "Set your Trader (by Dr. Jones) config file. The Trader module is the oldest, and simplest, available in this bot and therefor only requires 1 file upload to function properly.",
+      "options": [
+        {
+          "name": "config-file",
+          "description": "Your TraderConfig.txt file", 
+          "required": true
+        }
+      ]
+    }
+  },
+
+
+
+  {
+    "category": "System",
+    "enabled": true,
+    "data": {
+      "name": "commands",
+      "description": "Navigates users to this command table; This command will display a link to this command overview",
+      "options": []
+    }
+  },
+  {
+    "category": "System",
+    "enabled": true,
+    "data": {
+      "name": "help",
+      "description": "Display general information about the bot. Displays your trader type, item-list status, and links to important information like the website, command overview, donation, contact, and support",
+      "options": []
+    }
+  },
+  {
+    "category": "System",
+    "enabled": true,
+    "data": {
+      "name": "ping",
+      "description": "Displays API latency, bot latency, uptime, system stats, and user/server count",
+      "options": []
+    }
+  },
+  {
+    "category": "System",
+    "enabled": true,
+    "data": {
+      "name": "stats",
+      "description": "Display bot stats. This command is an exact copy (or alias) of /ping",
+      "options": []
+    }
+  },
+  {
+    "category": "System",
+    "enabled": true,
+    "data": {
+      "name": "support",
+      "description": "Receive support for the bot. Invites you to a Discord server which should be used for: Bugs, feedback, feature requests, suggestions, the open-beta, and update notifications.",
+      "options": []
+    }
+  }
+]

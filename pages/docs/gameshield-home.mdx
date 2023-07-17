@@ -1,0 +1,78 @@
+import GalleryContainer from '@components/GalleryContainer'
+import Button from 'react-bootstrap/Button'
+import Image from 'next/image'
+import Link from 'next/link'
+
+<div className='px-3 py-1' style={{
+  margin: '20vh 0',
+  borderRadius: '2rem',
+  width: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  textAlign: 'center'
+}}>
+  <h1
+    id='introduction'
+    className='display-4 fw-bold'
+    style={{
+      display: 'flex',
+      alignItems: 'center'
+    }}
+  >
+    <Image src='/images/gameshield/icon.png'
+      alt='icon'
+      height={50}
+      width={50}
+      style={{ marginRight: '.5rem', }}
+    />
+    {'GameShield'}
+  </h1>
+  <div className='col-lg-8 mx-auto'>
+    GameShield is a public bot for [Discord](https://discord.com) that let's you dynamically configure feeds. Create compact public kill-feeds, or detailed admin damage-feeds - you're in full control
+  </div>
+
+  <div style={{
+    display: 'flex',
+    justifyContent: 'center',
+    width: '100%',
+    flexGrow: 1,
+    flexWrap: 'wrap',
+    gap: '.5rem'
+  }}>
+    <Button className='btn btn-primary' as={Link}
+      target="_blank"
+      rel="noopener noreferrer"
+      href='https://discord.com/api/oauth2/authorize?client_id=1106622894877966376&permissions=275414902784&scope=bot%20applications.commands'
+      style={{
+        padding: '.75rem 2.5rem',
+        fontSize: 'large'
+      }}
+    >
+      {'Invite me!'}
+    </Button>
+    <Button href='/docs/gameshield-getting-started' className='btn btn-success' style={{
+      padding: '.75rem 2.5rem',
+      fontSize: 'large'
+    }} as={Link}>
+      {'Get Started'}
+    </Button>
+  </div>
+</div>
+
+## Gallery
+
+<GalleryContainer>
+
+![damagefeed-detailed](/images/gameshield/showcase/damagefeed-detailed.png)
+
+![killfeed-detailed](/images/gameshield/showcase/killfeed-detailed.png)
+
+![damagefeed-compact](/images/gameshield/showcase/damagefeed-compact.png)
+
+![killfeed-compact](/images/gameshield/showcase/killfeed-compact.png)
+
+![banfeed-detailed](/images/gameshield/showcase/banfeed-detailed.png)
+
+</GalleryContainer>

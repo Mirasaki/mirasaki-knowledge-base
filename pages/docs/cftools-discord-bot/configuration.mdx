@@ -1,0 +1,123 @@
+import { Callout } from 'nextra-theme-docs'
+
+# Configuration
+
+This page explains how to create your configuration files, what the indivudual files represent, and what the configuration values mean. All configuration is done in the `/config` folder, don't move files out of this folder.
+
+<Callout type="error">It is important that you leave the `.example` files intact. They are used to point out the differences in configuration when you update to later versions. Aside form that, renaming the `.example` files directly will also create merge issues when updating to later versions</Callout>
+
+## The .env file [#dotenv]
+
+First off, we'll have to create our own local `config/.env` file.
+
+<Callout type="error">Never share this file or it's contents with anyone</Callout>
+
+This is an `environmental` file, meaning it is excluded from our Git/GitHub repository. This file contains environmental specific values, and sensitive credentials.
+
+<Callout>Windows users often experience issues with this file, if you're getting errors that the env file can't be found, `Provide a valid file extension` errors when renaming, or `Expected path argument to be of type string` errors when starting the application - check out [this timestamped video](https://youtu.be/6rOCUZ8opLM?t=42)</Callout>
+
+1. Navigate into the `/config` folder
+2. **Copy & Paste** `config.example.js` and **rename** the file to `config.js`
+3. Fill in your environmental values
+
+### Required environmental values [#required-dotenv]
+
+| Configuration Option | Description | Value |
+| :---- | :----: | ----: |
+| **Required Variables** | | |
+| `NODE_ENV` |  The Node environment, only change if you know what you're doing   | `production` or `development` |
+| `DISCORD_BOT_TOKEN` | The token used to login to your Discord Bot User, refer to [the guide](/docs/discord-create-application)  | string(secret) |
+| `CLIENT_ID` |  The user-id of your Discord bot user, refer to [the guide](/docs/discord-create-application)  | string |
+| **CFTools** | | |
+| `CFTOOLS_API_APPLICATION_ID` |  The id used to identify your application on the CFTools Data API, refer to [the guide](/docs/cftools-create-application#application-id)  | string |
+| `CFTOOLS_API_SECRET` |  The secret that represents a password for your application on the CFTools Data API, refer to [the guide](/docs/cftools-create-application#application-id)  | string(secret) |
+
+### Optional environmental values [#optional-dotenv]
+
+<Callout>All of these are strictly **optional** and the default values will work best for most users. Feel free to [skip this section](#config)</Callout>
+
+| Configuration Option | Description | Type |
+| :---- | :----: | ----: |
+| **Debug Variables** | | |
+| `DEBUG_ENABLED` |  Perform extensive debug logging when enabled  | boolean |
+| `DEBUG_SLASH_COMMAND_API_DATA` |  Analyze command data that get's send to the Discord API  | boolean |
+| `DEBUG_INTERACTIONS` |  Debug log incoming interactions (buttons, slash-commands, modals, etc)  | boolean |
+| `DEBUG_AUTOCOMPLETE_RESPONSE_TIME` |  Print how long it takes to perform auto-complete handler queries  | boolean |
+| `DEBUG_MODAL_SUBMIT_RESPONSE_TIME` |  Print how long it takes to acknowledge a modal-interaction  | boolean |
+| `DEBUG_COMMAND_THROTTLING` |  Perform extensive debug logging on user command throttling  | boolean |
+| **API Application Command Data** | | |
+| `REFRESH_SLASH_COMMAND_API_DATA` |  Should we register our Discord command API data when booting  | string |
+| `CLEAR_SLASH_COMMAND_API_DATA` |  Should we clear our Discord command API data on boot  | string |
+| **Internal API/Server** | | |
+| `USE_API` |  Is the internal server/api enabled, used for status monitoring and exporting command data  | boolean |
+| `PORT` |  If the internal server/api is enabled, what port number should the API be hosting on  | number |
+| **Data Structure** | | |
+| `CHAT_INPUT_COMMAND_DIR` |  Root path to the command directory  | string |
+| `CONTEXT_MENU_COMMAND_DIR` |  Root path to the context-menu directory  | string |
+| `AUTO_COMPLETE_INTERACTION_DIR` |  Root path to the auto-complete-handler directory  | string |
+| `BUTTON_INTERACTION_DIR` |  Root path to the button-interaction directory  | string |
+| `MODAL_INTERACTION_DIR` |  Root path to the modal-interaction directory  | string |
+| `SELECT_MENU_INTERACTION_DIR` |  Root path to the select-menu-handler directory  | string |
+
+## The configuration file [#config]
+
+Next, we'll have to create our `config/config.js` file.
+
+This file contains configuration values that are neither credentials, environmental values, or server-specific options. The bot status/activity and internal permission levels are configured here.
+
+1. Navigate into the `/config` folder
+2. **Copy & Paste** `config.example.js` and **rename** the file to `config.js`
+3. Fill in your configuration values
+
+### Configuration options explained [#values]
+
+<Callout type="info">This configuration requires you to have [Discord Developer Mode](/docs/discord-developer-mode) enabled on your client</Callout>
+
+```js
+{
+  // Bot activity
+  presence: {
+    // The status - one of online, idle, invisible, dnd
+    status: 'online',
+    activities: [
+      {
+        // The text displayed in the bot status
+        // In the example: Listening to "/help"
+        name: '/help',
+        // One of Playing, Streaming, Listening, Watching
+        type: 'Listening'
+      }
+    ]
+  },
+
+  // Permission config
+  // Right-click channels/roles/users and select "Copy ID"
+  // If you don't see this option - enable "Discord Developer Mode"
+  // Discord > Settings > Advanced > Developer Mode
+  permissions: {
+    // Array of Moderator role ids
+    moderatorRoleIds: [ '968222116682022962', '1112021605267288096' ],
+    // Array of Administrator role ids
+    administratorRoleIds: [ '793898367243386940' ],
+    // Bot Owner, highest permission level (5)
+    ownerId: '290182686365188096',
+    // Bot developers, second to highest permission level (4)
+    developers: [ '625286565375246366' ]
+  },
+
+  // Additional permissions that are considered required when generating
+  // the bot invite link with /invite
+  // Modify only if you're adding new commands
+  // that require additional permissions
+  permissionsBase: [
+    PermissionsBitField.Flags.ViewChannel,
+    PermissionsBitField.Flags.SendMessages,
+    PermissionsBitField.Flags.SendMessagesInThreads
+  ],
+
+  // The Discord server invite to the bot Support server
+  supportServerInviteLink: 'https://discord.gg/mirasaki'
+};
+```
+
+<Callout type="error">This configuration is **partial** and a reference, __do not__ replace your full file contents with this example, make edits to your existing file instead</Callout>

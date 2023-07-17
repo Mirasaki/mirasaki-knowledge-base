@@ -1,0 +1,51 @@
+{
+  
+  "index": {
+    "title": "Introduction",
+    "type": "page",
+    "display": "hidden"
+  },
+
+  "docs": {
+    "title": "Docs",
+    "type": "page",
+    "href": "/docs"
+  },
+
+  "about": {
+    "type": "menu",
+    "title": "About",
+    "items": {
+      "about": {
+        "title": "👥 About"
+      },
+      "changelog": {
+        "title": "🧩 Changelog",
+        "href": "https://github.com/Mirasaki/mirasaki-knowledge-base/releases",
+        "newWindow": true
+      },
+      "contributors": {
+        "title": "⌨ Contributors",
+        "href": "https://github.com/Mirasaki/mirasaki-knowledge-base/graphs/contributors",
+        "newWindow": true
+      }
+    }
+  },
+
+  "404": {
+    "type": "page",
+    "theme": {
+      "timestamp": false,
+      "typesetting": "article"
+    }
+  },
+
+  "500": {
+    "type": "page",
+    "theme": {
+      "timestamp": false,
+      "typesetting": "article"
+    }
+  }
+
+}

@@ -1,0 +1,46 @@
+import { Callout, Steps } from 'nextra/components'
+
+# Adding feeds
+
+In this part of the guide/tutorial we will be adding/configuring feeds. This example will use a killfeed, but the same method applies to all other feeds
+
+Adding feeds is done through the `/add-feed` command:
+![add-feed](/images/guides/gameshield-adding-feeds/add-feed.png)
+
+<Steps>
+
+### webhook-listener
+
+This is the Discord webhook listener that we set up in [getting started](/docs/gameshield-getting-started), you should recoqnize the unique name you've given this listener - usually, the server name
+
+### event
+
+The event to target for this feed, this is an auto-complete enabled option, and all available values will be shown to you. For this example, we will be creating a kill-feed, so we choose `kill`
+
+### type
+
+The type for this webhook. There's 2 available types:
+
+`Detailed`: This type shows **all** relevant information, leaving nothing for the imagination. This type can also be considered `private`, as it **will** output sensitive information like CFTools profile links for users. Generally reserved for Admin logging/monitoring channels
+
+`Compact`: This type shows only the essential information, as consice as possible, while still being visually pleasing as a feed. This type can also be considered `public`, as it will **never** output any sensitive information like users' CFTools profile links
+
+### channel
+
+The channel where this feed should be posted, self-explanatory. Doesn't have to be the same channel as where your webhook listener is active, but definitely can be.
+
+<Callout>Make sure that **GameShield** has the `View Channel`, </Callout>
+
+### delete-original
+
+Should the original CFTools webhook message be deleted? This is `optional` and by default set to true, as the original CFTools webhook will output sensitive information with our current template settings
+
+<Callout>Requires the `Manage Messages` permissions for [`channel`](#channel)</Callout>
+
+### embed-color
+
+The color for the embed (in hexadecimal format), if applicable. Use an online color wheel picker, or Discord's color picker (`Server Settings` > `Roles` > `Color`)
+
+</Steps>
+
+<Callout type="info">That's all! Join your DayZ server, blast your friend in the head with a .50 BMG without telling them, and save the image so you can remind them on a daily basis</Callout>

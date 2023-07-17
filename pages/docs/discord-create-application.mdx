@@ -1,0 +1,93 @@
+import { Callout, Steps } from 'nextra-theme-docs'
+import GoBackButton from '@components/GoBackButton'
+
+# Discord Developer Application
+
+This application interacts with the [Discord API](https://discord.dev) and therefor requires you to create a Discord Developer Application. What you need to know about this side of Discord, is that you have both `Applications` and `bots`. What we will be focusing on here is the `bot`, the `Application` is mostly used for user authorization on websites using [`OAuth2`](https://discord.com/developers/docs/topics/oauth2), but it's still a requirement for our bot user.
+
+<Callout type="info">If you were directed here from a different guide or tutorial, there's a button at the bottom of this page that takes you back to your guide</Callout>
+
+<Callout>Not all applications can use an existing bot account. If the project you're setting up can't share a bot account with multiple processess, there will be a notice in the project guide - like this one!</Callout>
+
+<Steps>
+
+### Go to Discord Developer Portal
+
+Let's get started by creating the new application by navigating to the [Discord Developer Portal](https://discord.com/developers/applications), and clicking the `New Application` button in the top right (Located in the `Applications` left-hand menu)
+
+![new-application](/images/guides/discord-create-application/new-application.png)
+
+### Create the application
+
+In the modal/prompt that shows up, provide your application with a cool name, and click the checkbox to agree to the Discord Developer [Terms of Service](https://discord.com/developers/docs/policies-and-agreements/developer-terms-of-service) and [Developer Policy](https://discord.com/developers/docs/policies-and-agreements/developer-policy)
+
+<Callout type="error">Don't use `Discord` in the bot or Application name - this is a reserved keyword for Discord staff and will error if present</Callout>
+
+![create-application](/images/guides/discord-create-application/create-application.png)
+
+### Customize your application (optional) [#customize-application]
+
+Optionally provide your application with a cool image, description, and some tags for [App Directory](https://support.discord.com/hc/en-us/articles/9360431966359-Welcome-to-the-App-Directory-) later on
+
+![customize-application](/images/guides/discord-create-application/customize-application.png)
+
+### Obtaining your token
+
+To obtain your token (otherwise referred to as Discord Bot Token), navigate to `Bot` in the left-hand menu, and click `Reset Token` - this **will** invalidate/expire all other tokens - meaning you can only view this secret **once**, so keep it somewhere safe
+
+#### Token
+
+**Token** is your `DISCORD_BOT_TOKEN`
+
+#### Intents
+
+This is also where you enable `Privileged Gateway Intents` for your bot, like `Presence Intent`, `Server Members Intent`, and `Message Content Intent`
+
+![reset-token](/images/guides/discord-create-application/reset-token.png)
+![copy-token](/images/guides/discord-create-application/copy-token.png)
+
+### Add the bot to your server [#add-to-server]
+
+Lets navigate to `OAuth2` in the left-hand menu, and click `General` in the menu that was expanded.
+
+
+<Callout type="info">Alternatively to this guide, if you know what you're doing, replace `YOUR_CLIENT_ID` with your actual [Client ID](/docs/discord-create-application#client-id) in the following URL and open it in a new tab: `https://discord.com/api/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=0&scope=bot%20applications.commands`</Callout>
+
+#### Client ID
+
+**Client ID** is your `CLIENT_ID` - this is also referred to as `Discord Bot ID` and `Application ID`
+
+Copy your `Client ID`, and keep it somewhere safe - you **will** need this later
+
+![client-id](/images/guides/discord-create-application/client-id.png)
+
+#### URL Generator
+
+Next up, navigate to `URL Generator` in the same expanded menu (in the `OAuth2` left-hand menu)
+
+1. Click the `bot` and `applications.commands` **scopes**
+2. Click the relevant **permissions** for your bot, or select `Administator` if you're not sure
+
+<Callout type="error">Only give the `Administrator` permission to bots you own, or bots you otherwise trust. Bots with `Administrator` are essentially able to wipe your entire Discord server - channel, roles, members, everything - so be careful</Callout>
+
+![url-generator](/images/guides/discord-create-application/url-generator.png)
+
+#### Generated URL
+
+Scroll down (stay on the same page), and copy the `Generated URL` at the bottom of your screen. Open this in a new window.
+
+![generated-url](/images/guides/discord-create-application/generated-url.png)
+
+#### Authorize
+
+In this new screen, follow the page's instruction to add the bot to your Discord server:
+
+![add-to-server](/images/guides/discord-create-application/add-to-server.gif)
+
+</Steps>
+
+<Callout type="info" emoji="✅">That's all. You have now created your own Discord Developer Application with Bot user. Note down your credentials for this application, and store them somewhere safe.</Callout>
+
+<Callout type="info">Did you know - The Discord Developer portal is directly available at [discord.dev](https://discord.dev)</Callout>
+
+<GoBackButton />

@@ -1,0 +1,38 @@
+{
+  "welcome": {},
+  "hosting": {},
+
+  "---discord": {
+    "title": "Discord",
+    "type": "separator"
+  },
+  "discord-create-application": "Developer Application",
+  "discord-developer-mode": "Developer Mode",
+
+  "---cftools": {
+    "title": "CFTools",
+    "type": "separator"
+  },
+  "cftools-create-application": "Developer Application",
+  "cftools-server-api-id": "Server API ID",
+  "cftools-discord-bot": "CFTools Discord Bot",
+
+  "---gameshield": {
+    "title": "GameShield",
+    "type": "separator"
+  },
+  "gameshield-home": "Overview",
+  "gameshield-getting-started": "Getting Started",
+  "gameshield-updating-webhook-templates": "Updating Webhook Templates",
+  "gameshield-adding-feeds": "Adding Feeds",
+  "gameshield-events": "Events",
+  "gameshield-commands": "Commands",
+
+  "---": {
+    "title": "Trader Bots",
+    "type": "separator"
+  },
+  "traders-in-game-names": "In-Game Names",
+  "gmt": "Green Mountain Trader",
+  "expansion-market": "Expansion Market"
+}

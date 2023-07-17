@@ -1,0 +1,11 @@
+{
+  "index": "Overview",
+  "prerequisites": "Prerequisites",
+  "installation": "Installation",
+  "configuration": "Configuration",
+  "server-configuration": "Server Configuration",
+  "start-application": "Starting the application",
+  "discord-permissions": "Discord Permissions",
+  "client-permissions": "Client Permissions",
+  "commands": "Commands"
+}

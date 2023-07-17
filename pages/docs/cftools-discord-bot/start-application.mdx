@@ -1,0 +1,30 @@
+import { Callout, Steps } from 'nextra-theme-docs'
+
+# Starting the application
+
+## Docker (preferred)
+
+The quickest and easiest way to host/start this application is by deploying it inside a [Docker](https://docs.docker.com/engine/install/ "Official Docker Website") container.
+
+<Callout>A [**docker-compose**](https://docs.docker.com/compose/ "View docker-compose documentation") file is included for your convenience</Callout>
+
+<Callout type="info">The `tag` and `name` option values can be anything you want, this is just an example</Callout>
+<Steps>
+
+### Build the project [#create-build]
+
+Run `docker build --tag my-cftools-discord-bot .` to create your docker build
+
+### Start the bot
+
+Start the bot with `docker run -it --env-file .env --name my-cftools-discord-bot`
+
+</Steps>
+
+## NodeJS
+
+Start the application using any of the following approaches, in preferred order:
+    - For Windows users, start the application with the included `start.bat` file, this will keep your bot alive in the background
+    - `npm run pm2:start` to keep the process alive with [PM2](https://pm2.io/ "PM2 | Official Website"), suitable for production environments. (`npm i -g pm2` to install)
+    - Use the `node .` command (stops the bot if you close the command prompt)
+    - `npm run start:dev` if you have `nodemon` installed for automatic restarts on changes, suitable for development environments
