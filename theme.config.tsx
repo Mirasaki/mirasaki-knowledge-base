@@ -157,7 +157,7 @@ const config: DocsThemeConfig = {
           className="hidden select-none font-extrabold ltr:ml-2 rtl:mr-2 md:inline"
           title={`Mirasaki Development: ${TITLE || ''}`}
         >
-          Mirasaki Development
+          Mirasaki Wiki
         </span>
       </>
     )
