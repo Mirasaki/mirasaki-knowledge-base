@@ -36,6 +36,7 @@ jobs:
             cd /var/www/mirasaki-knowledge-base
 
             pm2 stop wiki-mirasaki-dev
+            rm -rf .next
             git pull origin main
             npm ci
             npm run build
