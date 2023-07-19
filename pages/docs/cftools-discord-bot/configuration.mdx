@@ -41,8 +41,11 @@ This is an `environmental` file, meaning it is excluded from our Git/GitHub repo
 
 <Callout>All of these are strictly **optional** and the default values will work best for most users. Feel free to [skip this section](#config)</Callout>
 
+<Callout type="error">If you're on MacOS, you want to manually point your `PATH_TO_CHROME_EXECUTABLE`, and remove `google-chrome-stable` from your Dockerfile (if applicable)</Callout>
+
 | Configuration Option | Description | Type |
 | :---- | :----: | ----: |
+| `PATH_TO_CHROME_EXECUTABLE` | The absolute path to your Chromium binary executable, uses [puppeteer-core](https://www.npmjs.com/package/puppeteer-core) if provided | string |
 | **Debug Variables** | | |
 | `DEBUG_ENABLED` |  Perform extensive debug logging when enabled  | boolean |
 | `DEBUG_SLASH_COMMAND_API_DATA` |  Analyze command data that get's send to the Discord API  | boolean |
