@@ -62,6 +62,8 @@ export default function Projects() {
           imageProps={{ backgroundColor: 'black' }}
         />
         <ProjectEntry
+          disabled={false}
+          id="mitsuki"
           name="Mitsuki"
           imageSrc='/images/projects/icons/mitsuki.png'
         />

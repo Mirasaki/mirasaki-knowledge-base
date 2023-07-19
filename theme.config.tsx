@@ -181,6 +181,7 @@ const config: DocsThemeConfig = {
           <div className="flex items-center gap-2">
             {title === 'CFTools' && <Logo src={"/images/projects/icons/cftools.png"} />}
             {title === 'GameShield' && <Logo src={"/images/projects/icons/gameshield.png"} />}
+            {title === 'Mitsuki' && <Logo src={"/images/projects/icons/mitsuki.png"} />}
             {title === 'Discord' && <Logo src={"/images/logos/discord-mark-blurple.svg"}
               style={{
                 padding: '0 .3rem'

@@ -27,6 +27,12 @@
   "gameshield-adding-feeds": "Adding Feeds",
   "gameshield-commands": "Commands",
 
+  "---mitsuki": {
+    "title": "Mitsuki",
+    "type": "separator"
+  },
+  "mitsuki": "Mitsuki",
+
   "---": {
     "title": "Trader Bots",
     "type": "separator"
