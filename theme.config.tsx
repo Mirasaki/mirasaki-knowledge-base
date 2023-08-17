@@ -182,6 +182,7 @@ const config: DocsThemeConfig = {
             {title === 'CFTools' && <Logo src={"/images/projects/icons/cftools.png"} />}
             {title === 'GameShield' && <Logo src={"/images/projects/icons/gameshield.png"} />}
             {title === 'Mitsuki' && <Logo src={"/images/projects/icons/mitsuki.png"} />}
+            {title === 'Remote File Access API' && <Logo src={"/images/projects/icons/remote-file-access-api.png"} />}
             {title === 'Discord' && <Logo src={"/images/logos/discord-mark-blurple.svg"}
               style={{
                 padding: '0 .3rem'

@@ -1,0 +1,26 @@
+---
+title: Using the application | Remote File API Access
+description: Learn how to use the application and make requests to the API
+---
+
+import { Callout } from 'nextra-theme-docs'
+
+# Using the application
+
+To use this application, you will have to make HTTP requests to the API that this application opens up.
+
+By default, your application will be online at port `9000` and available at [localhost:9000](http://localhost:9000)
+
+Using a custom domain, and SSL/TLS - requires a webserver configuration, like [Nginx](https://www.nginx.com/) or [Apache](https://httpd.apache.org/) - but that is not in scope of this tutorial
+
+## Authenticating
+
+To authenticate yourself, and get access to the files you've allowed access to remotely, you'll need to provide the authorization header:
+
+<Callout type="error">This is why you need a strong `API_KEY`, never share this sensitive information - it should be threated as a password</Callout>
+
+```
+  'x-api-key': '__YOUR_API_KEY__'
+```
+
+Any request without this specific authorization header will only be able to check if the application is online or not, but not see any file contents

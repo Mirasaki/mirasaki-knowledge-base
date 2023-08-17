@@ -27,6 +27,13 @@
   "gameshield-adding-feeds": "Adding Feeds",
   "gameshield-commands": "Commands",
 
+  "---remote-file-access-api": {
+    "title": "Remote File Access API",
+    "type": "separator"
+  },
+  "remote-file-access-api": "Hosting the application",
+  "rfaa-using-the-app": "Using the application",
+
   "---mitsuki": {
     "title": "Mitsuki",
     "type": "separator"

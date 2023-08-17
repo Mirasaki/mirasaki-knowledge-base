@@ -1,0 +1,51 @@
+---
+title: Prerequisites | Remote File API Access
+description: Learn more about requirements before setting up the application
+---
+
+import { Callout, Steps } from 'nextra-theme-docs'
+
+# Prerequisites
+
+There's several prerequisites to this application that are documented below
+
+## Docker (preferred) [#docker]
+
+The easiest method to install and use this application is by running it in a Docker container. We personally recommend [Docker Desktop](https://www.docker.com/products/docker-desktop/) for Windows users, and [`docker-compose`](https://docs.docker.com/compose/) for other operating systems. A simple `docker run` command will work fine as well.
+
+<Callout type="info">An example `docker-compose` file is provided in the source directory of this application, along with raw docker command examples to get you started using Docker in the `/package.json > scripts`</Callout>
+
+```yaml
+version: '3.1'
+
+services:
+  remote-file-access-api:
+    build: .
+    container_name: remote-file-access-api
+    restart: always
+    volumes:
+      # Bind mount, read-only app
+      - ./:/app:ro
+      # Anonymous volume
+      - /app/node_modules
+```
+
+## NodeJS (if not using Docker) [#nodejs]
+
+<Callout>Only use this if the preferred approach, [Docker](#docker), doesn't work for you</Callout>
+
+<Steps>
+
+### Go to the download page
+
+Head on over to the [download page](https://nodejs.org/en/download/)
+
+### Download latest LTS
+
+Download the latest LTS build available for your OS
+
+### Install necessary tools
+
+Be sure to check the box that says "Automatically install the necessary tools" when you're running the installation wizard
+
+</Steps>

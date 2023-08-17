@@ -29,6 +29,12 @@ export default function Projects() {
           imageSrc='/images/projects/icons/backup-manager.png'
         />
         <ProjectEntry
+          disabled={false}
+          id={'remote-file-access-api'}
+          name="Remote File Access API"
+          imageSrc='/images/projects/icons/remote-file-access-api.png'
+        />
+        <ProjectEntry
           name="Discord Bot Template"
           imageSrc='/images/projects/icons/bot-template.png'
         />

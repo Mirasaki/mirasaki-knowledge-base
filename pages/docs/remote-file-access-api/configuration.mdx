@@ -1,0 +1,117 @@
+---
+title: Configuration | Remote File Access API
+description: Learn how to configure and personalize the application using configuration files
+---
+
+import { Callout } from 'nextra-theme-docs'
+
+# Configuration
+
+This page explains how to create your configuration files, what the indivudual files represent, and what the configuration values mean. All configuration is done in the `/config` folder, don't move files out of this folder.
+
+<Callout type="error">It is important that you leave the `.example` files intact. They are used to point out the differences in configuration when you update to later versions. Aside form that, renaming the `.example` files directly will also create merge issues when updating to later versions</Callout>
+
+## The configuration file [#config]
+
+First off, we'll have to create our `config/config.ts` file.
+
+1. Navigate into the `/config` folder
+2. **Copy & Paste** `config.example.ts` and **rename** the file to `config.ts`
+3. Fill in your configuration values
+
+## Configuration options explained [#values]
+
+<Callout type="error">You should really use a strong (128+ character) API key for this application</Callout>
+
+## Global Options [#global-config]
+
+| Configuration Option | Description | Value |
+| :---- | :----: | ----: |
+| `API_KEY` |  GENERATE A STRONG (min 128 characters) API Key - used to authenticate (allow access)  | string(secret) |
+| `PORT` | Which port this application should run on, between `0` and `65535`  | integer |
+| `ENABLED_DEBUGGING` | Should we perform debug logging - this will slow down performance by a bit | boolean |
+
+## Remote Files
+
+| Configuration Option | Description | Value |
+| :---- | :----: | ----: |
+| `NAME` |  The name for this remote access content, should be unique  | string |
+| `DIRECTORY` |  The absolute path to the directory that holds the content. | string |
+| `FILE_NAME` | The file to look for, with extension | ?string |
+| `USE_LATEST_LINES` | The amount of lines to include in the response | ?integer |
+| `EXTENSION` | Ignored when `FILE_NAME` is provided, only allows files of provided extension when looking for most recent file | ?string |
+
+## JSON Database
+
+| Configuration Option | Description | Value |
+| :---- | :----: | ----: |
+| `NAME` |  The name for this remote access content, should be unique  | string |
+| `DIRECTORY` |  The absolute path to the directory that holds the content. | string |
+
+## Complete Example
+
+```js
+{
+  API_KEY: '__REPLACE_THIS_WITH_A_STRONG_API_KEY',
+  PORT: 9000,
+  REMOTE_FILES: [
+    {
+      NAME: 'Air Raids',
+      FILE_NAME: 'AirRaid.txt',
+      DIRECTORY: '/home/mirasaki/OmegaManager/servers/0/profiles',
+      USE_LATEST_LINES: 500
+    },
+    {
+      NAME: 'Loot Chests',
+      FILE_NAME: 'LootChests_LOG.txt',
+      DIRECTORY: '/home/mirasaki/OmegaManager/servers/0/profiles/CJ_LootChests',
+      USE_LATEST_LINES: 500,
+    },
+    {
+      NAME: 'Treasure',
+      FILE_NAME: 'Treasure.txt',
+      DIRECTORY: '/home/mirasaki/OmegaManager/servers/0/profiles/Treasure',
+      USE_LATEST_LINES: 500
+    },
+
+    {
+      NAME: 'Code Lock - Access',
+      DIRECTORY: '/home/mirasaki/OmegaManager/servers/0/profiles/CodeLock/Logs/Access',
+    },
+    {
+      NAME: 'Code Lock - Attach',
+      DIRECTORY: '/home/mirasaki/OmegaManager/servers/0/profiles/CodeLock/Logs/Attach',
+    },
+    {
+      NAME: 'Code Lock - Raid',
+      DIRECTORY: '/home/mirasaki/OmegaManager/servers/0/profiles/CodeLock/Logs/Raid',
+    },
+
+    {
+      NAME: 'Casino',
+      DIRECTORY: '/home/mirasaki/OmegaManager/servers/0/profiles/DayZCasinoV2',
+      EXTENSION: 'csv'
+    },
+    {
+      NAME: 'Expansion',
+      DIRECTORY: '/home/mirasaki/OmegaManager/servers/0/profiles/ExpansionMod/Logs',
+    },
+    {
+      NAME: 'Hacking',
+      DIRECTORY: '/home/mirasaki/OmegaManager/servers/0/profiles/HackingSystemV2/Logs',
+    },
+    {
+      NAME: 'King of the Hill',
+      DIRECTORY: '/home/mirasaki/OmegaManager/servers/0/profiles/KOTH/Logs',
+    }
+  ],
+  REMOTE_JSON_DATABASES: [
+    {
+      NAME: 'LB Banking | Balance',
+      DIRECTORY: '/home/mirasaki/OmegaManager/servers/0/profiles/LB_Banking/Players',
+    }
+  ]
+}
+```
+
+<Callout type="error">This configuration is **partial** and a reference, __do not__ replace your full file contents with this example, make edits to your existing file instead</Callout>
