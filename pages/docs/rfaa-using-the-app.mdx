@@ -24,3 +24,40 @@ To authenticate yourself, and get access to the files you've allowed access to r
 ```
 
 Any request without this specific authorization header will only be able to check if the application is online or not, but not see any file contents
+
+## Routes
+<Callout>The parameter `:name` is the `NAME` you provided in your configuration. This is true for all subsequent routes.</Callout>
+
+### `GET` /
+
+Status endpoint, publicly available
+
+### `GET` /options
+
+Options endpoints, displays all available routes (not methods) according to your configuration
+
+### `GET` /files/:name
+
+Get file contents
+
+### `GET` /json/:name
+
+Get all JSON data from directory
+
+### `GET` /json/:name/:identifier
+
+Get JSON data belonging to identifier.
+
+<Callout>The `identifier` parameter is dynamic, and will ultimately resolve in the path: `<DIRECTORY>/<identifier>.json` - this is true for all subsequent routes</Callout>
+
+### `DELETE` /json/:name/:identifier
+
+Delete JSON data belonging to identifier
+
+### `PUT` /json/:name/:identifier
+
+Save the request body as the full, new content/data for specified JSON entry
+
+### `PATCH` /json/:name/:identifier
+
+Apply request body key-value pairs to JSON entry *individually*
