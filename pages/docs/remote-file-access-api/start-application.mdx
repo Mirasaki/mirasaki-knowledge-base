@@ -7,30 +7,7 @@ import { Callout, Steps } from 'nextra-theme-docs'
 
 # Starting the application
 
-## Docker (preferred)
-
-The quickest and easiest way to host/start this application is by deploying it inside a [Docker](https://docs.docker.com/engine/install/ "Official Docker Website") container.
-
-<Callout>A [**docker-compose**](https://docs.docker.com/compose/ "View docker-compose documentation") file is included for your convenience</Callout>
-
-<Callout type="info">The `tag` and `name` option values can be anything you want, this is just an example</Callout>
-<Steps>
-
-### Build the project [#create-build]
-
-Run `npm run build` to build your application
-
-Run `docker build --tag remote-file-access-api .` to create your docker build
-
-### Start the application
-
-Start the application with `docker run -it --name remote-file-access-api`
-
-</Steps>
-
-## NodeJS
-
-Run `npm run build` to build your application
+Run the command `npm run build` to build your application
 
 Start the application using any of the following approaches, in preferred order:
     - Use the `node .` command (stops the application if you close the command prompt)
