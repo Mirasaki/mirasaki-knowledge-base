@@ -41,6 +41,15 @@ First off, we'll have to create our `config/config.ts` file.
 | `USE_LATEST_LINES` | The amount of lines to include in the response | ?integer |
 | `EXTENSION` | Ignored when `FILE_NAME` is provided, only allows files of provided extension when looking for most recent file | ?string |
 
+## Remote Directories
+
+| Configuration Option | Description | Value |
+| :---- | :----: | ----: |
+| `NAME` |  The name for this remote access content, should be unique  | string |
+| `DIRECTORY` |  The absolute path to the directory that should be accessed remotely. | string |
+| `EXTENSIONS` | Whitelisted file extensions - everything is whitelisted if empty or null | ?string[] |
+
+
 ## JSON Database
 
 | Configuration Option | Description | Value |

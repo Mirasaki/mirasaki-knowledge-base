@@ -26,6 +26,7 @@ To authenticate yourself, and get access to the files you've allowed access to r
 Any request without this specific authorization header will only be able to check if the application is online or not, but not see any file contents
 
 ## Routes
+
 <Callout>The parameter `:name` is the `NAME` you provided in your configuration. This is true for all subsequent routes.</Callout>
 
 ### `GET` /
@@ -39,6 +40,10 @@ Options endpoints, displays all available routes (not methods) according to your
 ### `GET` /files/:name
 
 Get file contents
+
+### `GET` /directories/:name
+
+Get compressed folder/directory zip contents in response body
 
 ### `GET` /json/:name
 
