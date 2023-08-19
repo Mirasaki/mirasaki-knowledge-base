@@ -83,6 +83,21 @@ Configure the use of premade teleport locations
 | `USE_TELEPORT_LOCATIONS` | Should the `/teleport-location` command be available  | boolean |
 | `TELEPORT_LOCATIONS_FILE_NAME` | Teleport file to use for this server configuration. Loaded from `/config/teleport-locations/`  | string |
 
+### Watch List configuration
+
+Configure the use of custom role-ping notifications when players that are in a custom managed list log in to any of your servers
+
+<Callout>Requires the `Message Content` intent - information is read from CFTools webhoook with `user.join` event</Callout>
+
+<Callout type="info">Check out [our guide](/docs/gameshield-getting-started) if you need help with this part - it's made for a different project, but the process is the same</Callout>
+
+| Configuration Option   | Description | Type |
+| :---- | :----: | ----: |
+| `WATCH_LIST_CHANNEL_ID` | The id of the channel where notifications should be send  | string |
+| `WATCH_LIST_NOTIFICATION_ROLE_ID` | The id of the role that should be pinged in notifications  | string |
+| `CFTOOLS_WEBHOOK_CHANNEL_ID` | The id of the channel where CFTools webhook (`user.join`) messages are send  | string |
+| `CFTOOLS_WEBHOOK_USER_ID` | The id of the user/webhook that sends the CFTools webhook messages  | string |
+
 ### Leaderboard Configuration
 
 Global `/leaderboard` command configuration. Configure sorting stats, output format and your leaderboard blacklist, 
