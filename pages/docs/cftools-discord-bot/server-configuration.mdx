@@ -98,6 +98,18 @@ Configure the use of custom role-ping notifications when players that are in a c
 | `WATCH_LIST_CHANNEL_ID` | The id of the channel where notifications should be send  | string |
 | `WATCH_LIST_NOTIFICATION_ROLE_ID` | The id of the role that should be pinged in notifications  | string |
 
+### Delayed Kill Feed configuration
+
+Configure a custom delayed killfeed, forwarding webhook messages to a different/public channel after a specified delay
+
+<Callout>Requires the `Message Content` intent - information is read from CFTools webhoook with `player.kill` event</Callout>
+
+| Configuration Option   | Description | Type |
+| :---- | :----: | ----: |
+| `USE_KILL_FEED` | Should the module be enabled for this server configuration  | string |
+| `KILL_FEED_DELAY` | How long to wait (in seconds) before forwarding the killfeed message  | string |
+| `KILL_FEED_CHANNEL_ID` | The id of the channel where killfeed messages should be forwarded/send to  | string |
+
 ### Leaderboard Configuration
 
 Global `/leaderboard` command configuration. Configure sorting stats, output format and your leaderboard blacklist, 
