@@ -35,12 +35,16 @@ This section will explain what the different configuration options mean. The con
 
 Configuration that is required for most of our functionality to work, these should be considered required, meaning you **will** have to change these values to your own. Everything else can be considered optional and therefor left on the default values
 
+<Callout type="info">Check out [our guide](/docs/gameshield-getting-started) if you need help setting up your CFTools webhook - it's made for a different project, but the process is the same</Callout>
+
 | Configuration Option   | Description | Type |
 | :---- | :----: | ----: |
 | `NAME`    |  The name used to identify this server, used internally and when selecting servers in Discord   |   string |
 | `CFTOOLS_SERVER_API_ID` | Your CFTools Server API-ID, refer to [the guide](/docs/cftools-server-api-id)  | string |
 | `SERVER_IPV4` | Your DayZ game-server's public IP address, your users use this to connect to your server  | string |
 | `SERVER_PORT` | Your DayZ game-server port, **not** your steam-query port  | number |
+| `CFTOOLS_WEBHOOK_CHANNEL_ID` | The id of the channel where CFTools webhook messages are send  | string |
+| `CFTOOLS_WEBHOOK_USER_ID` | The id of the user/webhook that sends the CFTools webhook messages  | string |
 
 ### Command Configuration
 
@@ -89,14 +93,10 @@ Configure the use of custom role-ping notifications when players that are in a c
 
 <Callout>Requires the `Message Content` intent - information is read from CFTools webhoook with `user.join` event</Callout>
 
-<Callout type="info">Check out [our guide](/docs/gameshield-getting-started) if you need help with this part - it's made for a different project, but the process is the same</Callout>
-
 | Configuration Option   | Description | Type |
 | :---- | :----: | ----: |
 | `WATCH_LIST_CHANNEL_ID` | The id of the channel where notifications should be send  | string |
 | `WATCH_LIST_NOTIFICATION_ROLE_ID` | The id of the role that should be pinged in notifications  | string |
-| `CFTOOLS_WEBHOOK_CHANNEL_ID` | The id of the channel where CFTools webhook (`user.join`) messages are send  | string |
-| `CFTOOLS_WEBHOOK_USER_ID` | The id of the user/webhook that sends the CFTools webhook messages  | string |
 
 ### Leaderboard Configuration
 
