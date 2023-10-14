@@ -38,7 +38,7 @@ jobs:
             pm2 stop wiki-mirasaki-dev
             rm -rf .next
             git pull origin main
-            npm ci
+            npm i
             npm run build
 
             pm2 restart wiki-mirasaki-dev
