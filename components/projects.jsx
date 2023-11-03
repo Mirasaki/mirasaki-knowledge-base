@@ -25,7 +25,10 @@ export default function Projects() {
     <div className="mx-auto mb-10 w-[880px] max-w-full px-4 text-center">
       <div className={styles.projects}>
         <ProjectEntry
+          disabled={false}
+          id={'backup-manager'}
           name="Backup Manager"
+          url="https://github.com/Mirasaki/backup-manager#readme"
           imageSrc='/images/projects/icons/backup-manager.png'
         />
         <ProjectEntry
