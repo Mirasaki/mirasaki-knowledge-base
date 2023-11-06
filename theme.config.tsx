@@ -200,6 +200,7 @@ const config: DocsThemeConfig = {
             {title === 'Expansion Market' && <Logo src={"/images/projects/icons/expansion-market.jpg"} style={{
               marginRight: '.25rem'
             }}/>}
+            {title === 'Workshop Monitor' && <Logo src={"/images/projects/icons/workshop-monitor.png"}/>}
             {title}
           </>
         )

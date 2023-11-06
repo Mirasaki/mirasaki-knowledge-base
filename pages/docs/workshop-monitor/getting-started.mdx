@@ -1,0 +1,65 @@
+---
+title: Getting Started | Workshop Monitor
+description: Learn how to get started using the bot, how to sync mods with your live server, and how to use the commands.
+---
+
+import Image from 'next/image'
+import { Callout, Steps } from 'nextra/components'
+
+
+# Getting Started
+
+## Adding the bot
+
+To add the bot to your server, click [here](https://discord.com/api/oauth2/authorize?client_id=1170346553777598515&permissions=0&scope=bot%20applications.commands) and select the server you want to add it to.
+
+## Discord Webhook
+
+This project sends notifications through Discord webhooks, so that your users only ever see your **custom branded** messages. To set up a webhook, follow the steps below:
+
+<Steps>
+  ### Channel Settings
+  `Right-click` (click and hold on mobile) the channel where you want your webhook to be active, and select `Edit Channel`
+  ### Integrations
+  Navigate to `Integrations` in the left-hand menu, click `Webhooks`, and create your new webhook. Provide it with a custom name and avatar/profile icon, so that your branding is consistent.
+  ### Copy URL
+  When that's done, click the `Copy Webhook URL` button, keep this value somewhere safe - don't share it with anyone
+</Steps>
+
+## Creating a collection
+
+You can get started by adding a collection, which is a group of mods that you want to receive notifications for. To do this, run the `/collection create` command in your server, and provide the command options.
+
+![create-collection](/images/guides/workshop-monitor/collection-create.png)
+
+### Options
+
+- **Name** - The name of the collection, this is what you'll use to reference it in command options later (not shown in notifications)
+- **Webhook URL** - The URL you copied earlier, this is where notifications will be sent
+- **Message** - The message that will be sent when along with the notification, you can ping members and roles here
+- **Display Images** - Whether or not to display images in the notification
+- **Display Meta** - Whether or not to display meta in the notifications, this includes the mod's tags, subscriptions, and favorites
+
+### Display Option Breakdown
+
+![embed-breakdown](/images/guides/workshop-monitor/embed-breakdown.png)
+
+## Adding mods to a collection
+
+Once you've created a collection, you can add mods to it. There's multiple ways to add mods:
+
+### Syncing with server
+
+You can sync collections with your live server, so that any mod that is on your server at the time, will be added the selected collection. To do this, run the `/sync-mods-with-server` command in your server.
+
+You will need to provide your public ip address, and the game-port that your server is running on. Follow the `123.123.123.123:2302` format.
+
+We have plans to release a module that will automatically sync your collections with your server, so that you don't have to run this command manually.
+
+### Manually
+
+You can manually add mod ids using the `/mods track` command in your server. **25** mods can be added at a time, and you can add as many as you want. Space or comma separated. You can obtain mod id's by copying them from the workshop URL, or right-clicking on a mod showcase image and selecting `Copy Link Address` to get a URL if you're on the dedicated client.
+
+## Done
+
+That's it! You're all set up, and you should start receiving notifications when mods are updated. If you have any questions or feature requests, feel free to join our [Discord](https://discord.gg/mirasaki)

@@ -1,0 +1,113 @@
+---
+title: Workshop Monitor
+description: Get notfified whenever a mod on your game-server receives an update. Sync your collections with your live game-servers, or manually add some id's to track.
+---
+
+import GalleryContainer from '@components/GalleryContainer'
+import Button from 'react-bootstrap/Button'
+import Image from 'next/image'
+import Link from 'next/link'
+
+
+# Overview
+
+<div className='px-3 py-1' style={{
+  margin: '20vh 0',
+  borderRadius: '2rem',
+  width: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  textAlign: 'center'
+}}>
+  <h1
+    id='introduction'
+    className='display-4 fw-bold'
+    style={{
+      display: 'flex',
+      alignItems: 'center'
+    }}
+  >
+    <Image src='/images/projects/icons/workshop-monitor.png'
+      alt='icon'
+      height={50}
+      width={50}
+      style={{ marginRight: '.5rem', }}
+    />
+    {'Workshop Monitor'}
+  </h1>
+  <div className='col-lg-8 mx-auto'>
+    **Workshop Monitor** is a no-permissions Discord bot that notifies you whenever a Steam Workshop mod on your game-server receives an update. It doesn't need much more of an introduction, it does exactly what you expect and want it to do.
+  </div>
+
+  <div style={{
+    display: 'flex',
+    justifyContent: 'center',
+    width: '100%',
+    flexGrow: 1,
+    flexWrap: 'wrap',
+    gap: '.5rem'
+  }}>
+    <Button className='btn btn-primary' as={Link}
+      target="_blank"
+      rel="noopener noreferrer"
+      href='https://discord.com/api/oauth2/authorize?client_id=1170346553777598515&permissions=0&scope=bot%20applications.commands'
+      style={{
+        padding: '.75rem 2.5rem',
+        fontSize: 'large'
+      }}
+    >
+      {'Invite Me'}
+    </Button>
+    <Button href='/docs/workshop-monitor/getting-started' className='btn btn-success' style={{
+      padding: '.75rem 2.5rem',
+      fontSize: 'large'
+    }} as={Link}>
+      {'Learn More'}
+    </Button>
+  </div>
+</div>
+
+## Features
+
+- Create and manage collections in Discord with **`/collections`**
+- Sync your collection to your live game-server with **`/sync-mods-with-server`**
+- Add some individual mods to track, and otherwise manage mods for collections, with **`/mods`**
+- Uses webhook URL's so users only see **your custom branded webhook**, not the bot identity
+- Custom message notifications (pingable users, roles, etc.)
+
+## Why?
+
+Existing workshop-alert bots have been shut-down because they are unable to scale, so we ran a stress-test of **2.500.000 global mods** and were able to execute the query without being rate-limited using our current strategy. This strategy abides by both the Steam API Terms of Use and Discord Developer Terms of Service, so we're confident in our ability to get the bot verified to avoid having a hard-limit of 100 servers like existing solutions.
+
+
+## Development Limitations
+
+During active development of the bot, the following limitations are in place:
+
+- You can only create a single collection
+- You can only add a maximum of 100 mods to this collection
+
+*As we gradually monitor performance and other key metrics, these limits will be increased for everyone.*
+
+## Statistics
+
+The bot is already over **150.000 mod queries/checks**, so I thought I'd share some insight on how fast **Workshop Monitor** sends out notifications
+
+- **2500 mods** are queried every *5 seconds*
+  - Once all mods are queried, we wait for *30 seconds* before checking again
+  - With **15.000  (global) mods** tracked, notifications can be expected within *1 minute (35 second query time + 30 second timeout, ~50 second average)*
+  - With **100.000 (global) mods** tracked, notifications can be expected within *3 and a half minutes*, this is still faster than any other solution currently available (and they are limited to 100 Discord servers)
+  - Once **100.000 mods** are tracked, additional workers are spawned for every additional chunk of **100.000 mods**. This ensures we cycle every *3 and a half minute*, no matter how much we will have to scale.
+  - Current counts will always be displayed in the bot status
+- We ran a test of **2.500.000** mod queries, and weren't rate limited with our current strategy. This might change as Steam likes to play around with their limits. Worst-case scenario, we have a module ready that let's you add your own Steam API Key to the bot (encrypted) so you can use your own dedicated quota without limitations in place from our side, and guarantee notifications come through within *30 seconds*
+
+We are considering lowering the amount of mods required to fill a chunk, so that we can ensure 1 minute updates even when the bot scales.
+
+## Stay Updated
+
+Are you interested in the project? Keep up-to-date with changes and additions by picking up a notification role in [our discord server](https://discord.gg/mirasaki)
+
+> Workshop Monitor is a hobby project and is not affiliated with Valve or Steam.
+> Steam and the Steam logo are trademarks of Valve Corporation. All other trademarks are property of their respective owners.

@@ -26,6 +26,12 @@ export default function Projects() {
       <div className={styles.projects}>
         <ProjectEntry
           disabled={false}
+          id={'workshop-monitor'}
+          name="Workshop Monitor"
+          imageSrc='/images/projects/icons/workshop-monitor.png'
+        />
+        <ProjectEntry
+          disabled={false}
           id={'backup-manager'}
           name="Backup Manager"
           url="https://github.com/Mirasaki/backup-manager#readme"
