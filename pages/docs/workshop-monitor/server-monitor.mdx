@@ -1,0 +1,95 @@
+---
+title: Server Monitor | Workshop Monitor
+description: Learn how to start monitoring your server to receive notifications whenever the server goes offline or comes back online.
+---
+
+import Image from 'next/image'
+import { Callout, Steps } from 'nextra/components'
+
+
+# Server Monitor
+
+<Callout>
+  This module requires [`origin`](/docs/workshop-monitor/getting-started#options) and [`steam-query-port`](/docs/workshop-monitor/getting-started#options) to be configured for your **Collection**.
+</Callout>
+
+This module can be set-up to send out custom-branded notifications whenever your server is offline for longer than the configurable threshold. No branding is included by default, and it uses the same webhook approach so all your users will ever get to see is your branded webhook.
+
+- Server status is checked every 30 seconds
+- Server Monitors are linked to collections. You should consider a collection to be your game-server instance.
+- Can be paused and resumed anytime
+- Lots of customization
+- Sensible defaults, you only have to provide a webhook to get started
+- Automatically paused if your server is offline for 48 hours
+
+## Prerequisites
+
+This module requires the following options to be configured for your **Collection**:
+
+- [`origin`](/docs/workshop-monitor/getting-started#options)
+- [`steam-query-port`](/docs/workshop-monitor/getting-started#options)
+
+If you've been using the bot since before this module released, this is how you update so that all new features are available for your collection/server:
+
+**`/collection edit collection:YOUR_COLLECTION steam-query-port:27016 game:dayz origin:1.1.1.1:2302`**
+
+<Callout type="info">
+  Replace the ip and ports with your actual values. If you don't know what a steam-query-port is you don't have to include it, the default port `27016` will be used
+</Callout>
+
+## Creating a server monitor
+
+Add a server monitor using the **`/server-monitor add`** command, and enjoy being notified when your server is offline for longer than the configurable threshold.
+
+<Callout type="info">
+  Check out [the command table](/docs/workshop-monitor/commands) if you're looking for this information in a more condensed format.
+</Callout>
+
+### Required Options
+
+- **`collection`** - The collection to monitor, just select it from the auto-completed options 😋
+- **`webhook-url`** - The webhook to send notifications to - check out [our guide](/docs/workshop-monitor/getting-started#discord-webhook) if you're not sure!
+
+### Additional Options
+
+Of course, you can customize the server monitor to your liking. Here are some of the options you can configure:
+
+- **`threshold`** - The amount of time in minutes that the server can be offline before a notification is sent. Defaults to **5 minutes**.
+- **`color-online`** - The color of the embed when the server is online. Defaults to `red`.
+- **`color-offline`** - The color of the embed when the server is offline. Defaults to `green`.
+- **`title-online`** - The title of the embed when the server is online. Defaults to `Server Online`.
+- **`title-offline`** - The title of the embed when the server is offline. Defaults to `Server Offline`.
+- **`message-server-online`** - The message to send when the server comes back online. You can ping users & roles here. Defaults to `none`.
+- **`message-server-offline`** - The message to send when the server goes offline. You can ping users & roles here. Defaults to `none`.
+- **`image-url-online`** - The image to use when the server is online. Defaults to `none`.
+- **`image-url-offline`** - The image to use when the server is offline. Defaults to `none`.
+
+## Additional commands
+
+### `/server-monitor info`
+
+Get information about how this system works, but in Discord instead of on the wiki.
+
+### `/server-monitor show`
+
+Get information about an existing server monitor. Displays **all** customization options.
+
+### `/server-monitor list`
+
+Lists all server monitors for the current collection.
+
+### `/server-monitor edit`
+
+Edit an existing server monitor, requires monitor to be paused. You can edit all the options listed above, all options are validated.
+
+### `/server-monitor remove`
+
+Remove an existing server monitor.
+
+### `/server-monitor pause`
+
+Pause an existing server monitor. This will prevent any notifications from being sent.
+
+### `/server-monitor resume`
+
+Resume a paused server monitor.
