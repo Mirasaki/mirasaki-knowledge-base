@@ -27,6 +27,8 @@
   "gameshield-updating-webhook-templates": "Updating Webhook Templates",
   "gameshield-adding-feeds": "Adding Feeds",
   "gameshield-commands": "Commands",
+  "gameshield-terms-of-service": "Terms of Service",
+  "gameshield-privacy-policy": "Privacy Policy",
 
   "---remote-file-access-api": {
     "title": "Remote File Access API",
