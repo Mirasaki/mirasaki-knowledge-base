@@ -4,7 +4,7 @@ description: Learn how to personalize your server settings, and how to set-up mu
 ---
 
 import { Callout } from 'nextra-theme-docs'
-import { Cards, Card } from 'nextra/components'
+import { Cards, Card, Steps } from 'nextra/components'
 
 # 🛠️ Server Configuration
 
@@ -28,6 +28,8 @@ This section will explain what the different configuration options mean. The con
   <Card title="Live Chat Module" href="#live-chat-module" />
   <Card title="Teleport Configuration" href="#teleport-configuration" />
   <Card title="Leaderboard Configuration" href="#leaderboard-configuration" />
+  <Card title="Watch List Configuration" href="#watch-list-configuration" />
+  <Card title="Kill Feed Configuration" href="#delayed-kill-feed-configuration" />
   <Card title="Automatic Leaderboard" href="#automatic-leaderboard" />
 </Cards>
 
@@ -111,6 +113,34 @@ Configure a custom delayed killfeed, forwarding webhook messages to a different/
 | `USE_KILL_FEED` | Should the module be enabled for this server configuration  | string |
 | `KILL_FEED_DELAY` | How long to wait (in seconds) before forwarding the killfeed message  | string |
 | `KILL_FEED_CHANNEL_ID` | The id of the channel where killfeed messages should be forwarded/send to  | string |
+| `KILL_FEED_MESSAGE_IDENTIFIER` | The string that indicates if something should be included in the kill-feed relay, [more info]()  | string |
+| `KILL_FEED_REMOVE_IDENTIFIER` | Should the identifier be removed from the message before forwarding/relaying  | boolean |
+
+#### Kill Feed Message Identifier
+
+The kill feed message identifier is a string that is used to determine if a message should be included in the kill feed relay. This is used to prevent messages that are not kill-feed messages from being relayed, and to include other CFTools webhook events as desired by your community.
+
+The default value is ` got killed by `, which only matches the default CFTools message for the `player.kill` event.
+
+If you want to include other events, you can (for example): 
+
+##### Update your configuration (servers.js)
+
+1. Use `KILL_FEED_INCLUDE | ` as the `KILL_FEED_MESSAGE_IDENTIFIER` value
+2. Change `KILL_FEED_REMOVE_IDENTIFIER` to `true`
+
+##### Update your CFTools webhook templates
+
+1. Navigate to your [CFTools Dashboard](https://app.cftools.cloud/dashboard)
+2. Navigate to your server > `Manage` > `Integrations`
+3. Find the webhook that is being used for the kill-feed relay
+4. Click `Templates` and copy-paste the `KILL_FEED_MESSAGE_IDENTIFIER` value at the start of every event you want to include as displayed below
+
+![kill-feed-includes](/images/guides/cftools-discord-bot/kill-feed-includes.png)
+
+<Callout type="info">
+  This feature was funded for public use by RAGEx from [Full Throttle DayZ](https://fullthrottledayz.com/) - thank you for your support and contribution to the community!
+</Callout>
 
 ### Leaderboard Configuration
 
@@ -118,6 +148,7 @@ Global `/leaderboard` command configuration. Configure sorting stats, output for
 
 | Configuration Option   | Description | Type |
 | :---- | :----: | ----: |
+| `OVERALL_RANKING_STAT` | What stat should be used to determine player rank when using `OVERALL` statistics  | one of `LEADERBOARD_STATS` |
 | `LEADERBOARD_DEFAULT_SORTING_STAT` | What stat should be used as the default sorting stat  | one of `LEADERBOARD_STATS` |
 | `LEADERBOARD_PLAYER_LIMIT` | How many players to display - min `10`, max `100`  | number |
 | `LEADERBOARD_BLACKLIST` | Players (steam64/CFToolsID) to exclude from leaderboard  | string[] |
