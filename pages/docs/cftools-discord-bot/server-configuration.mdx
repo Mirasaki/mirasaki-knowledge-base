@@ -63,7 +63,7 @@ These configuration options apply changes to commands/functionality that aren't 
 
 This application offers a module that let's you dynamically forward/relay chat from members in Discord, to your DayZ server - use these configuration options to modify/personalize the module
 
-<Callout>Requires the privileged "Message Content Intent" ([discord.dev](https://discord.com/developers/applications) > Your App > Bot > `Message Content Intent` - check out [this guide](/docs/discord-create-application#intents) if you need more information)</Callout>
+<Callout>Requires the privileged "Message Content Intent" ([discord.dev](https://discord.com/developers/applications) &gt; Your App &gt; Bot &gt; `Message Content Intent` - check out [this guide](/docs/discord-create-application#intents) if you need more information)</Callout>
 
 <Callout type="info">Max message length is `256` characters, and a members tags and display name count towards that</Callout>
 
@@ -113,7 +113,7 @@ Configure a custom delayed killfeed, forwarding webhook messages to a different/
 | `USE_KILL_FEED` | Should the module be enabled for this server configuration  | string |
 | `KILL_FEED_DELAY` | How long to wait (in seconds) before forwarding the killfeed message  | string |
 | `KILL_FEED_CHANNEL_ID` | The id of the channel where killfeed messages should be forwarded/send to  | string |
-| `KILL_FEED_MESSAGE_IDENTIFIER` | The string that indicates if something should be included in the kill-feed relay, [more info]()  | string |
+| `KILL_FEED_MESSAGE_IDENTIFIER` | The string that indicates if something should be included in the kill-feed relay, [more info](#kill-feed-message-identifier)  | string |
 | `KILL_FEED_REMOVE_IDENTIFIER` | Should the identifier be removed from the message before forwarding/relaying  | boolean |
 
 #### Kill Feed Message Identifier
