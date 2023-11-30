@@ -127,7 +127,7 @@ If you want to include other events, you can (for example):
 ##### Update your configuration (servers.js)
 
 1. Use `KILL_FEED_INCLUDE | ` as the `KILL_FEED_MESSAGE_IDENTIFIER` value
-2. Change `KILL_FEED_REMOVE_IDENTIFIER` to `true`
+2. Change `KILL_FEED_REMOVE_IDENTIFIER` to `true`, this will remove `KILL_FEED_INCLUDE | ` from the message before relaying it
 
 ##### Update your CFTools webhook templates
 
