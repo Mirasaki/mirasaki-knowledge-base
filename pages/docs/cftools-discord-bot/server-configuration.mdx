@@ -24,6 +24,7 @@ This section will explain what the different configuration options mean. The con
 
 <Cards>
   <Card title="Global" href="#global" />
+  <Card title="Webhook Configuration" href="#webhoook-configuration"/>
   <Card title="Command Configuration" href="#command-configuration" />
   <Card title="Live Chat Module" href="#live-chat-module" />
   <Card title="Teleport Configuration" href="#teleport-configuration" />
@@ -37,14 +38,25 @@ This section will explain what the different configuration options mean. The con
 
 Configuration that is required for most of our functionality to work, these should be considered required, meaning you **will** have to change these values to your own. Everything else can be considered optional and therefor left on the default values
 
-<Callout type="info">Check out [our guide](/docs/gameshield-getting-started) if you need help setting up your CFTools webhook - it's made for a different project, but the process is the same</Callout>
-
 | Configuration Option   | Description | Type |
 | :---- | :----: | ----: |
 | `NAME`    |  The name used to identify this server, used internally and when selecting servers in Discord   |   string |
 | `CFTOOLS_SERVER_API_ID` | Your CFTools Server API-ID, refer to [the guide](/docs/cftools-server-api-id)  | string |
 | `SERVER_IPV4` | Your DayZ game-server's public IP address, your users use this to connect to your server  | string |
 | `SERVER_PORT` | Your DayZ game-server port, **not** your steam-query port  | number |
+
+### Webhook Configuration
+
+Configure a CFTools webhook for your server, this is used for (including, but not limited to) the live-chat module and delayed kill-feed.
+
+This configuration instructs the bot to extract information from the CFTools webhook messages (game events, like `player.kill` and `user.join`) to be used across multiple different modules. This approach was chosen to avoid having to setup an HTTPS-enabled web-server.
+
+<Callout type="info">
+  Check out [our guide](/docs/gameshield-getting-started) if you need help setting up your CFTools webhook - it's made for a different project, but the process is the same. (step 7 is not relevant for this project)
+</Callout>
+
+| Configuration Option   | Description | Type |
+| :---- | :----: | ----: |
 | `CFTOOLS_WEBHOOK_CHANNEL_ID` | The id of the channel where CFTools webhook messages are send  | string |
 | `CFTOOLS_WEBHOOK_USER_ID` | The id of the user/webhook that sends the CFTools webhook messages  | string |
 
@@ -95,7 +107,9 @@ Configure the use of premade teleport locations
 
 Configure the use of custom role-ping notifications when players that are in a custom managed list log in to any of your servers
 
-<Callout>Requires the `Message Content` intent - information is read from CFTools webhoook with `user.join` event</Callout>
+<Callout>Requires the `Message Content` intent</Callout>
+
+<Callout>Requires the [CFTools webhoook]() with `user.join` event</Callout>
 
 | Configuration Option   | Description | Type |
 | :---- | :----: | ----: |
