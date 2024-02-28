@@ -1,11 +1,6 @@
 @tailwind utilities;
 
 a {
-  /*
-    Yeah I do not like bootstrap anymore
-    I wish we had component only styling instead of this global
-    link and text color styling
-  */
   color: inherit;
   text-decoration: none;
 }

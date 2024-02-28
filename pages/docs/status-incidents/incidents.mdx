@@ -1,0 +1,42 @@
+---
+title: Incidents | Status Incidents
+description: An incident is an event that causes an unplanned interruption or reduction in quality of a service. Incidents can be created for a project, and can have multiple affected services.
+---
+
+import { Callout, Steps } from 'nextra-theme-docs'
+
+# Incidents
+
+An incident is an event that causes an unplanned interruption or reduction in quality of a service. Incidents can be created for a project, and can have multiple affected services.
+
+## Managing Incidents
+
+We strongly recommend performing the following actions before managing incidents:
+
+- Use the `/admin-role` command to ensure that only users with a specific role can perform administrative actions.
+- Use the `/admin-log-channel` to ensure that all actions are logged to a specific channel.
+
+<Steps>
+
+### Use the `/incidents create` command
+
+Use the **`/incidents create`** command to create a new incident for a project.
+
+![incidents-create](/images/guides/status-incidents/incidents-create.gif)
+
+### Sending updates
+
+Use the **`/incidents update`** command to send updates to an incident.
+
+![incidents-update](/images/guides/status-incidents/incidents-update.gif)
+
+</Steps>
+
+## Notes
+
+- Incidents can be created for a project, and can have multiple affected services.
+- Incidents can be updated with new information, and can be resolved when the issue is fixed.
+- Incidents can be created, updated, and resolved by users with the `/admin-role` role.
+- Status `Resolved` sets resolution, and you'll be unable to provide any non-resolved updates (like `Monitoring`) without using `/incidents remove-status`.
+- Status `Post Mortem` can only be used **once** **__after__** the incident is resolved.
+- You should explore all the other `/incidents` subcommands to learn what else you can do with incidents.

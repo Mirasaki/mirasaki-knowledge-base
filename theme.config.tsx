@@ -201,6 +201,7 @@ const config: DocsThemeConfig = {
               marginRight: '.25rem'
             }}/>}
             {title === 'Workshop Monitor' && <Logo src={"/images/projects/icons/workshop-monitor.png"}/>}
+            {title === 'Status Incidents' && <Logo src={"/images/projects/icons/status-incidents.png"}/>}
             {title}
           </>
         )

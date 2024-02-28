@@ -26,6 +26,12 @@ export default function Projects() {
       <div className={styles.projects}>
         <ProjectEntry
           disabled={false}
+          id={'status-incidents'}
+          name="Status Incidents"
+          imageSrc='/images/projects/icons/status-incidents.png'
+        />
+        <ProjectEntry
+          disabled={false}
           id={'workshop-monitor'}
           name="Workshop Monitor"
           imageSrc='/images/projects/icons/workshop-monitor.png'

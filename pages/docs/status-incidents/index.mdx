@@ -1,0 +1,83 @@
+---
+title: Status Incidents
+description: Status Incidents is a Discord bot for managing service status incidents.
+---
+
+import Button from 'react-bootstrap/Button'
+import Link from 'next/link'
+import Image from 'next/image'
+
+<div className='px-3 py-1' style={{
+  margin: '20vh 0',
+  borderRadius: '2rem',
+  width: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  textAlign: 'center'
+}}>
+  <h1
+    id='introduction'
+    className='display-4 fw-bold'
+    style={{
+      display: 'flex',
+      alignItems: 'center'
+    }}
+  >
+    <Image src='/images/projects/icons/status-incidents.png'
+      alt='icon'
+      height={50}
+      width={50}
+      style={{ marginRight: '.5rem', }}
+    />
+    {'Status Incidents'}
+  </h1>
+  <div className='col-lg-8 mx-auto'>
+    Status Incidents is a Discord bot for managing service status incidents. It allows you to create, update, and resolve incidents with ease. You can also view the history of incidents and get notified when a new incident is created or an existing incident is updated.
+  </div>
+
+  <div style={{
+    display: 'flex',
+    justifyContent: 'center',
+    width: '100%',
+    flexGrow: 1,
+    flexWrap: 'wrap',
+    gap: '.5rem'
+  }}>
+    <Button className='btn btn-primary' as={Link}
+      target="_blank"
+      rel="noopener noreferrer"
+      href='https://discord.com/oauth2/authorize?client_id=1177599657048809492&permissions=0&scope=bot+applications.commands'
+      style={{
+        padding: '.75rem 2.5rem',
+        fontSize: 'large'
+      }}
+    >
+      {'Invite me!'}
+    </Button>
+    <Button href='/docs/status-incidents/getting-started' className='btn btn-success' style={{
+      padding: '.75rem 2.5rem',
+      fontSize: 'large'
+    }} as={Link}>
+      {'Get Started'}
+    </Button>
+  </div>
+</div>
+
+{/* [DEV] - Add showcase and features */}
+
+## 🤩 Features
+
+- **Incident Management**: Create, update, and resolve incidents with ease.
+- **Incident History**: View the history of incidents.
+- **Incident Notifications**: Get notified when a new incident is created or an existing incident is updated.
+- **Incident Embeds**: Get detailed information about incidents in a beautiful, customizable embed.
+
+## 📸 Showcase
+
+![Incident Embed](https://i.imgur.com/3Z3z3Zz.png)
+
+## 🚀 Getting Started
+
+Navigate to the next page to get started with Status Incidents.

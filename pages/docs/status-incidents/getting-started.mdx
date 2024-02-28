@@ -1,0 +1,64 @@
+---
+title: Projects | Status Incidents
+description: A project in Status Incidents is a service or application that is being monitored for incidents. This page provides an overview of how to manage Projects in Status Incidents.
+---
+
+import { Callout, Steps } from 'nextra-theme-docs'
+
+# Getting Started
+
+Projects in Status Incidents are services or applications that are being monitored for incidents. This page provides an overview of how to manage Projects in Status Incidents.
+
+A project can be monitored, and incidents can be created for it. Projects can also have multiple services, and each incident can have multiple affected services.
+
+## Configuring the bot
+
+We strongly recommend performing the following actions before creating a project:
+
+- Use the `/admin-role` command to ensure that only users with a specific role can perform administrative actions.
+- Use the `/admin-log-channel` to ensure that all actions are logged to a specific channel.
+
+<Steps>
+
+### Use the `/projects create` command
+
+Use the **`/projects create`** command to create a Project in Status Incidents.
+
+<Callout type="info">
+  Check out the [Create Project Options](#create-project-options) section for a list of available options.
+</Callout>
+
+![project-webhook](/images/guides/status-incidents/project-webhook.gif)
+
+### Configure Services
+
+Use the **`/services create`** command to create a Service (or services) for the Project. This step is optional, but it is recommended to configure services for the project when applicable.
+
+These are recommended because they allow you to organize your incidents and provide more context to your users.
+
+![services-overview](/images/guides/status-incidents/services-overview.png)
+![create-service](/images/guides/status-incidents/create-service.gif)
+
+### Configure Statuses
+
+Use the **`/statuses edit`** command to edit a Status (or statuses) for the Project. This step is optional, and allows you to use custom labels, emojis, colors and statuses altogether for your projects.
+
+![configure-statuses](/images/guides/status-incidents/configure-statuses.gif)
+
+### Configure Embeds
+
+Use the **`/embeds configure`** command to edit Incidents embeds for this Project. This step is optional, and allows you to customize the embeds for your incidents on a per-project basis.
+
+![configure-embeds](/images/guides/status-incidents/configure-embeds.gif)
+
+</Steps>
+
+## Create Project Options
+
+- **`name`** - The name of the project.
+- **`webhook-url`** - The webhook URL for the project, this is where incident messages will be sent (displayed in GIF).
+- **`description`** - (optional) The description of the project.
+- **`default-message`** - (optional) The default message for incidents, you can ping roles and users here.
+- **`can-subsribe`** - (optional) Whether users can subscribe to be notified of incidents for this project.
+
+For more information about commands, check out the [Commands](/docs/status-incidents/commands) page.
