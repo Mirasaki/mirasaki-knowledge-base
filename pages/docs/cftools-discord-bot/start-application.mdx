@@ -3,28 +3,23 @@ title: Start the Application | CFTools Discord Bot
 description: Learn how to start the application in a variery of ways
 ---
 
-import { Callout, Steps } from 'nextra-theme-docs'
+import { Steps } from 'nextra-theme-docs'
 
 # Starting the application
 
 ## Docker (preferred)
 
-The quickest and easiest way to host/start this application is by deploying it inside a [Docker](https://docs.docker.com/engine/install/ "Official Docker Website") container.
-
-<Callout>A [**docker compose**](https://docs.docker.com/compose/ "View docker compose documentation") file is included for your convenience</Callout>
-
-<Callout type="info">The `tag` and `name` option values can be anything you want, this is just an example</Callout>
-<Steps>
+The quickest and easiest way to host/start this application is by deploying it inside a [Docker](https://docs.docker.com/engine/install/ "Official Docker Website") container. We recommend [Docker Desktop](https://www.docker.com/products/docker-desktop/).
 
 ### Build the project [#create-build]
 
-Run `docker build --tag my-cftools-discord-bot .` to create your docker build
+Run `docker compose build` to create your docker build (this needs to be ran from the project root).
 
 ### Start the bot
 
-Start the bot with `docker run -it --env-file .env --name cftools-discord-bot my-cftools-discord-bot`
+Run the command `docker compose up -d` to start the bot in the background.
 
-</Steps>
+Once the bot is running, you can check the logs by running `docker compose logs -f`. (ctrl+c to exit)
 
 ## NodeJS
 
