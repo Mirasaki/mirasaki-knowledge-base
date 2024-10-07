@@ -1,0 +1,7 @@
+services:
+  mirasaki-knowledge-base:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "49002:3000"

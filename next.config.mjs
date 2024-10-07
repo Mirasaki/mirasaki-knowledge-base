@@ -17,6 +17,7 @@ export default withNextra({
   distDir: './.next', // Nextra supports custom `nextConfig.distDir`
   redirects: () => [],
   reactStrictMode: true,
+  output: 'standalone',
   images: {
     remotePatterns: [
       // PayPal buttons
